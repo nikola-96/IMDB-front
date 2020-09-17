@@ -30,6 +30,10 @@ export default {
       type: Function,
       required: true,
     },
+    totalPages: {
+      type: Number,
+      required: true,
+    },
   },
   data() {
     return {

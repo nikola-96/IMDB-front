@@ -3,7 +3,11 @@
     <div class="wraper" v-for="movie in getAllMoviesFromState.data" :key="movie.id">
       <SingleMovieComponent :movie="movie" />
     </div>
-    <PaginationComponent :movies="getAllMoviesFromState" :startFetchNextPage="startFetchNextPage" />
+    <PaginationComponent
+      :movies="getAllMoviesFromState"
+      :startFetchNextPage="startFetchNextPage"
+      :totalPages="totalPages"
+    />
   </div>
 </template>
 <script>
@@ -22,8 +26,14 @@ export default {
   computed: {
     ...mapGetters(["getAllMoviesFromState"]),
   },
+  data() {
+    return {
+      totalPages: 0,
+    };
+  },
   async created() {
     await this.startFetchMovies();
+    this.totalPages = this.getAllMoviesFromState.last_page;
   },
 };
 </script>
