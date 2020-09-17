@@ -3,7 +3,8 @@ import HTTP from "./BaseService";
 
 class MovieService {
   async fetchAllMovies() {
-    await HTTP.get(MOVIES.GET_ALL);
+    const response = await HTTP.get(MOVIES.GET_ALL);
+    return response;
   }
 }
 
