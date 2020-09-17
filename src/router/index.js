@@ -2,6 +2,8 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Register from "../views/auth/register/Register";
 import Login from "../views/auth/login/Login";
+import MoviesList from "../views/movies/MoviesList";
+
 
 Vue.use(VueRouter);
 
@@ -15,6 +17,11 @@ const routes = [
     path: "/register",
     name: "Register",
     component: Register,
+  },
+  {
+    path: "/movies",
+    name: "Movies",
+    component: MoviesList,
   },
 ];
 
