@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="sign-up">
+    <div class="register">
       <h2 class="title">Please register</h2>
-      <form class="sign-up-form" @submit.prevent="handleSubmit">
+      <form class="register-form" @submit.prevent="handleSubmit">
         <div class="gruop">
           <input
             class="form-input"
@@ -52,14 +52,14 @@
 export default {
   name: "RegisterForm",
   props: {
-    startPostUser: {
+    startRegisterUser: {
       type: Function,
       requred: true,
     },
   },
   methods: {
     handleSubmit() {
-      this.startPostUser(this.user);
+      this.startRegisterUser(this.user, "Register");
       this.$router.push("/login");
     },
   },
@@ -72,7 +72,7 @@ export default {
 </script>
 
 <style scoped>
-.sign-up-form {
+.register-form {
   margin: 50px 0 0 0;
 }
 .form-input {
