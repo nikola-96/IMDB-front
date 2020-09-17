@@ -7,7 +7,7 @@
       <div class="col-md-8">
         <div class="card-body">
           <h5 class="card-title">{{movie.title}}</h5>
-          <p class="card-text">{{movie.description}}</p>
+          <p class="card-text">{{movie.description.slice(0, 150)}}...</p>
           <p class="card-text"></p>
         </div>
       </div>
