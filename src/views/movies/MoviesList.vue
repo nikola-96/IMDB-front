@@ -7,6 +7,7 @@
 </template>
 <script>
 import SingleMovieComponent from "../../components/movies/movies-list/SingleMovieComponent";
+
 import { mapActions, mapGetters } from "vuex";
 export default {
   name: "MoviesList",
@@ -21,7 +22,6 @@ export default {
   },
   async created() {
     await this.startFetchMovies();
-    console.log("radi");
   },
 };
 </script>
