@@ -1,27 +1,29 @@
 <template>
   <div>
     <div class="wraper" v-for="movie in getAllMoviesFromState" :key="movie.id">
-      <SingleMovieComponent :movie="movie" />
+      <SingleMovieComponentForList :movie="movie" :redirectToSingleMovie="redirectToSingleMovie" />
     </div>
   </div>
 </template>
 <script>
-import SingleMovieComponent from "../../components/movies/movies-list/SingleMovieComponent";
+import SingleMovieComponentForList from "../../components/movies/movies-list/SingleMovieComponentForList";
 import { mapActions, mapGetters } from "vuex";
 export default {
   name: "MoviesList",
   components: {
-    SingleMovieComponent,
+    SingleMovieComponentForList,
   },
   methods: {
     ...mapActions(["startFetchMovies"]),
+    redirectToSingleMovie(id) {
+      this.$router.push(`/movie/${id}`);
+    },
   },
   computed: {
     ...mapGetters(["getAllMoviesFromState"]),
   },
   async created() {
     await this.startFetchMovies();
-    console.log("radi");
   },
 };
 </script>
