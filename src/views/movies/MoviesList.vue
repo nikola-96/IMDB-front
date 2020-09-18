@@ -1,11 +1,8 @@
 <template>
   <div>
-    <div
-      class="wraper"
-      v-for="movie in getAllMoviesFromState.data"
-      :key="movie.id"
-    >
-      <SingleMovieComponent :movie="movie" />
+
+    <div class="wraper" v-for="movie in getAllMoviesFromState" :key="movie.id">
+      <SingleMovieComponentForList :movie="movie" :redirectToSingleMovie="redirectToSingleMovie" />
     </div>
     <PaginationComponent
       :movies="getAllMoviesFromState"
@@ -14,24 +11,26 @@
   </div>
 </template>
 <script>
-import SingleMovieComponent from "../../components/movies/movies-list/SingleMovieComponent";
 import PaginationComponent from "../../components/movies/pagination/PaginationComponent";
+import SingleMovieComponentForList from "../../components/movies/movies-list/SingleMovieComponentForList";
 import { mapActions, mapGetters } from "vuex";
 export default {
   name: "MoviesList",
   components: {
-    SingleMovieComponent,
     PaginationComponent,
+    SingleMovieComponentForList,
   },
   methods: {
     ...mapActions(["startFetchMovies", "startFetchNextPage"]),
+    redirectToSingleMovie(id) {
+      this.$router.push(`/movie/${id}`);
+    },
   },
   computed: {
     ...mapGetters(["getAllMoviesFromState"]),
   },
   async created() {
     await this.startFetchMovies();
-    this.totalPages = this.getAllMoviesFromState.last_page;
   },
 };
 </script>
