@@ -1,12 +1,16 @@
 <template>
   <div>
-    <div class="wraper" v-for="movie in getAllMoviesFromState.data" :key="movie.id">
+    <div
+      class="wraper"
+      v-for="movie in getAllMoviesFromState.data"
+      :key="movie.id"
+    >
       <SingleMovieComponent :movie="movie" />
     </div>
     <PaginationComponent
       :movies="getAllMoviesFromState"
       :startFetchNextPage="startFetchNextPage"
-      :totalPages="totalPages"
+      :paginationArr="getPaginationArrayFromState"
     />
   </div>
 </template>
@@ -25,11 +29,6 @@ export default {
   },
   computed: {
     ...mapGetters(["getAllMoviesFromState"]),
-  },
-  data() {
-    return {
-      totalPages: 0,
-    };
   },
   async created() {
     await this.startFetchMovies();

@@ -1,57 +1,38 @@
 <template>
   <div>
-    <nav aria-label="...">
-      <ul class="pagination justify-content-center">
-        <li class="page-item">
-          <a
-            class="page-link"
-            tabindex="-1"
-            aria-disabled="true"
-            @click="fetchPreviousPage"
-          >Previous</a>
-        </li>
-        <li class="page-item" :class="{ disabled : disableNext}">
-          <a class="page-link" @click="fetchNextPage">Next</a>
-        </li>
-      </ul>
-    </nav>
+    <sliding-pagination
+      v-if="movies.current_page"
+      :current="movies.current_page"
+      :total="movies.last_page"
+      @page-change="pageChangeHandler"
+    ></sliding-pagination>
   </div>
 </template>
 
 <script>
+import SlidingPagination from "vue-sliding-pagination";
 export default {
   name: "PaginationComponent",
+  components: {
+    SlidingPagination,
+  },
   props: {
     movies: {
-      type: Object,
+      type: [Array, Object],
       required: true,
     },
     startFetchNextPage: {
       type: Function,
       required: true,
     },
-    totalPages: {
-      type: Number,
-      required: true,
-    },
-  },
-  data() {
-    return {
-      disableNext: false,
-      disablePrev: true,
-    };
   },
   methods: {
-    fetchNextPage() {
-      this.movies.next_page_url
-        ? this.startFetchNextPage(this.movies.current_page + 1)
-        : null;
-    },
-    fetchPreviousPage() {
-      this.movies.prev_page_url
-        ? this.startFetchNextPage(this.movies.current_page - 1)
-        : null;
+    pageChangeHandler(selectedPage) {
+      this.startFetchNextPage(selectedPage);
     },
   },
 };
 </script>
+<style scoped>
+@import "~vue-sliding-pagination/dist/style/vue-sliding-pagination.css";
+</style>
