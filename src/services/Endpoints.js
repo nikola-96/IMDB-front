@@ -3,6 +3,6 @@ export const MOVIES = {
   SINGLE_MOVIE: "/movies/",
 };
 export const AUTH = {
-  LOGIN: "/login",
-  REGISTER: "/register",
+  LOGIN: "/auth/login",
+  REGISTER: "/auth/register",
 };

@@ -6,13 +6,11 @@ class AuthService {
     this.setAxiosDefaultAuthorizationHeader();
   }
   async register(user) {
-    const response = await HTTP.post(AUTH.REGISTER, user);
-    window.localStorage.setItem("loginToken", response.data.access_token);
-    this.setAxiosDefaultAuthorizationHeader();
-
-    return response.data;
+    await HTTP.post(AUTH.REGISTER, user);
   }
-  login(email, password) {
+
+
+  login({ email, password }) {
     return HTTP.post(AUTH.LOGIN, { email, password }).then((response) => {
       window.localStorage.setItem("loginToken", response.data.access_token);
       this.setAxiosDefaultAuthorizationHeader();
