@@ -10,7 +10,6 @@
     <PaginationComponent
       :movies="getAllMoviesFromState"
       :startFetchNextPage="startFetchNextPage"
-      :paginationArr="getPaginationArrayFromState"
     />
   </div>
 </template>
