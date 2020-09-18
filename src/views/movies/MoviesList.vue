@@ -1,7 +1,10 @@
 <template>
   <div>
     <div class="wraper" v-for="movie in getAllMoviesFromState" :key="movie.id">
-      <SingleMovieComponentForList :movie="movie" :redirectToSingleMovie="redirectToSingleMovie" />
+      <SingleMovieComponentForList
+        :movie="movie"
+        :redirectToSingleMovie="redirectToSingleMovie"
+      />
     </div>
   </div>
 </template>

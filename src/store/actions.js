@@ -10,7 +10,7 @@ export default {
   async startFetchSingleMovie({ commit }, id) {
     const response = await movieService.fetchSingleMovie(id);
     commit("SET_SINGLE_MOVIE", response.data);
-    
+  },
   async startRegisterUser({ commit }, user) {
     try {
       await authService.register(user);
@@ -18,11 +18,11 @@ export default {
       commit("SET_ERRORS", error);
     }
   },
-
   async startLoginUser({ commit }, user) {
     try {
       await authService.login(user);
     } catch (error) {
       commit("SET_ERRORS", error);
+    }
   },
 };
