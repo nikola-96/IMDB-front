@@ -53,6 +53,7 @@ export default {
   name: "RegisterForm",
   props: {
     startRegisterUser: {
+    startPostUser: {
       type: Function,
       requred: true,
     },
@@ -60,6 +61,7 @@ export default {
   methods: {
     handleSubmit() {
       this.startRegisterUser(this.user, "Register");
+      this.startPostUser(this.user);
       this.$router.push("/login");
     },
   },
@@ -73,6 +75,7 @@ export default {
 
 <style scoped>
 .register-form {
+.sign-up-form {
   margin: 50px 0 0 0;
 }
 .form-input {

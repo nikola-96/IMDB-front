@@ -1,11 +1,13 @@
 <template>
   <div>
+
     <AuthNavbar toRoute="Login" />
     <RegisterForm :startRegisterUser="startRegisterUser" />
   </div>
 </template>
 <script>
 import RegisterForm from "@/components/auth/register/RegisterForm";
+
 import AuthNavbar from "@/components/auth/navbar/AuthNavbar";
 import { mapActions, mapGetters } from "vuex";
 

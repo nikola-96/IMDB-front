@@ -7,6 +7,7 @@ export default {
     console.log(response);
     commit("SET_MOVIES", response.data);
   },
+
   async startRegisterUser({ commit }, user) {
     try {
       await authService.register(user);
@@ -14,6 +15,7 @@ export default {
       commit("SET_ERRORS", error);
     }
   },
+
   async startLoginUser({ commit }, user) {
     try {
       await authService.login(user);
