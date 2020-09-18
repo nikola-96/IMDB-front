@@ -2,7 +2,7 @@
   <div class="card mb-3" style="max-width: 540px;">
     <div class="row no-gutters">
       <div class="col-md-4">
-        <img :src="movie.image_url" class="card-img" />
+        <img class="card-img" :src="movie.image_url" />
       </div>
       <div class="col-md-8">
         <div class="card-body">
@@ -20,7 +20,7 @@ export default {
   props: {
     movie: {
       type: Object,
-      required: true,
+      requred: true,
     },
   },
 };

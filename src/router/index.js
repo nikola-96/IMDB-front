@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import Register from "../views/auth/register/Register";
 import Login from "../views/auth/login/Login";
 import MoviesList from "../views/movies/MoviesList";
+import SingleMovie from "../views/movies/SingleMovie";
 
 Vue.use(VueRouter);
 
@@ -21,6 +22,11 @@ const routes = [
     path: "/movies",
     name: "Movies",
     component: MoviesList,
+  },
+  {
+    path: "/movie/:id",
+    name: "SingleMovie",
+    component: SingleMovie,
   },
 ];
 

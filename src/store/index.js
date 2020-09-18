@@ -10,6 +10,7 @@ export default new Vuex.Store({
   state: {
     errors: [],
     movies: [],
+    movie: {},
   },
   getters,
   mutations,
