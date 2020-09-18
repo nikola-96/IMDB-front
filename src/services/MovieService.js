@@ -15,6 +15,11 @@ class MovieService {
     const response = await HTTP.get(MOVIES.PAGE + page);
     return response;
   }
+  async fetchSearchedMovies(term) {
+    const response = await HTTP.get(`${MOVIES.SEARCH_TERM}${term}`);
+
+    return response;
+  }
 }
 
 const movieService = new MovieService();

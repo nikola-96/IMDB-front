@@ -29,4 +29,8 @@ export default {
       commit("SET_ERRORS", error);
     }
   },
+  async startSearchMovie({ commit }, term) {
+    const response = await movieService.fetchSearchedMovies(term);
+    commit("SET_MOVIES", response.data);
+  },
 };

@@ -1,6 +1,10 @@
 <template>
   <div>
-    <SearchComponent />
+    <SearchComponent
+      class="input-search"
+      :startSearchMovie="startSearchMovie"
+      :startFetchMovies="startFetchMovies"
+    />
     <div class="wraper" v-for="movie in getAllMoviesFromState.data" :key="movie.id">
       <SingleMovieComponentForList :movie="movie" :redirectToSingleMovie="redirectToSingleMovie" />
     </div>
@@ -20,7 +24,11 @@ export default {
     SearchComponent,
   },
   methods: {
-    ...mapActions(["startFetchMovies", "startFetchNextPage"]),
+    ...mapActions([
+      "startFetchMovies",
+      "startFetchNextPage",
+      "startSearchMovie",
+    ]),
     redirectToSingleMovie(id) {
       this.$router.push(`/movie/${id}`);
     },
@@ -30,6 +38,7 @@ export default {
   },
   async created() {
     await this.startFetchMovies();
+    console.log(this.getAllMoviesFromState);
   },
 };
 </script>
@@ -37,5 +46,8 @@ export default {
 .wraper {
   display: flex;
   justify-content: center;
+}
+.input-search {
+  margin-bottom: 15px;
 }
 </style>
