@@ -43,7 +43,9 @@
             v-model="user.password_confirmation"
           />
         </div>
-        <button class="btn-submit btn btn-secondary" type="submit">Submit</button>
+        <button class="btn-submit btn btn-secondary" type="submit">
+          Submit
+        </button>
       </form>
     </div>
   </div>
@@ -53,7 +55,6 @@ export default {
   name: "RegisterForm",
   props: {
     startRegisterUser: {
-    startPostUser: {
       type: Function,
       requred: true,
     },
@@ -75,7 +76,6 @@ export default {
 
 <style scoped>
 .register-form {
-.sign-up-form {
   margin: 50px 0 0 0;
 }
 .form-input {

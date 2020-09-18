@@ -18,12 +18,6 @@ const routes = [
     component: Register,
   },
   {
-
-    path: "/register",
-    name: "Register",
-    component: Regiter,
-  }
-  {
     path: "/movies",
     name: "Movies",
     component: MoviesList,
@@ -46,7 +40,7 @@ router.beforeEach((to, from, next) => {
     (to.name === "Login" || to.name === "Register") &&
     isAuthenticated
   ) {
-    return next({ name: "/" });
+    return next({ name: "/movies" });
   } else next();
 });
 
