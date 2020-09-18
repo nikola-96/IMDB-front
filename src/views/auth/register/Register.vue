@@ -1,19 +1,24 @@
 <template>
   <div>
-    <RegisterForm :startPostUser="startPostUser" />
+
+    <AuthNavbar toRoute="Login" />
+    <RegisterForm :startRegisterUser="startRegisterUser" />
   </div>
 </template>
 <script>
 import RegisterForm from "@/components/auth/register/RegisterForm";
+
+import AuthNavbar from "@/components/auth/navbar/AuthNavbar";
 import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "Register",
   components: {
     RegisterForm,
+    AuthNavbar,
   },
   methods: {
-    ...mapActions(["startPostUser"]),
+    ...mapActions(["startRegisterUser"]),
   },
   computed: {
     ...mapGetters(["getErrorsFromState"]),
