@@ -6,6 +6,10 @@ export default {
     const response = await movieService.fetchAllMovies();
     commit("SET_MOVIES", response.data);
   },
+  async startFetchNextPage({ commit }, url) {
+    const response = await movieService.fetchNextPage(url);
+    commit("SET_MOVIES", response.data);
+  },
 
   async startFetchSingleMovie({ commit }, id) {
     const response = await movieService.fetchSingleMovie(id);
