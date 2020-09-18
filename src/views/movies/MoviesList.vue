@@ -1,27 +1,23 @@
 <template>
   <div>
-
-    <div class="wraper" v-for="movie in getAllMoviesFromState" :key="movie.id">
-      <SingleMovieComponentForList
-        :movie="movie"
-        :redirectToSingleMovie="redirectToSingleMovie"
-      />
+    <SearchComponent />
+    <div class="wraper" v-for="movie in getAllMoviesFromState.data" :key="movie.id">
+      <SingleMovieComponentForList :movie="movie" :redirectToSingleMovie="redirectToSingleMovie" />
     </div>
-    <PaginationComponent
-      :movies="getAllMoviesFromState"
-      :startFetchNextPage="startFetchNextPage"
-    />
+    <PaginationComponent :movies="getAllMoviesFromState" :startFetchNextPage="startFetchNextPage" />
   </div>
 </template>
 <script>
 import PaginationComponent from "../../components/movies/pagination/PaginationComponent";
 import SingleMovieComponentForList from "../../components/movies/movies-list/SingleMovieComponentForList";
+import SearchComponent from "../../components/movies/search-component/SearchComponent";
 import { mapActions, mapGetters } from "vuex";
 export default {
   name: "MoviesList",
   components: {
     PaginationComponent,
     SingleMovieComponentForList,
+    SearchComponent,
   },
   methods: {
     ...mapActions(["startFetchMovies", "startFetchNextPage"]),
