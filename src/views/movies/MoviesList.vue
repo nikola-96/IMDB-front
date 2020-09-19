@@ -8,7 +8,12 @@
     <div class="wraper" v-for="movie in getAllMoviesFromState.data" :key="movie.id">
       <SingleMovieComponentForList :movie="movie" :redirectToSingleMovie="redirectToSingleMovie" />
     </div>
-    <PaginationComponent :movies="getAllMoviesFromState" :startFetchNextPage="startFetchNextPage" />
+    <PaginationComponent
+      :movies="getAllMoviesFromState"
+      :startFetchNextPage="startFetchNextPage"
+      :getTermFromState="getTermFromState"
+      :startFetchNextPageForSearchedTerm="startFetchNextPageForSearchedTerm"
+    />
   </div>
 </template>
 <script>
@@ -28,17 +33,17 @@ export default {
       "startFetchMovies",
       "startFetchNextPage",
       "startSearchMovie",
+      "startFetchNextPageForSearchedTerm",
     ]),
     redirectToSingleMovie(id) {
       this.$router.push(`/movie/${id}`);
     },
   },
   computed: {
-    ...mapGetters(["getAllMoviesFromState"]),
+    ...mapGetters(["getAllMoviesFromState", "getTermFromState"]),
   },
   async created() {
     await this.startFetchMovies();
-    console.log(this.getAllMoviesFromState);
   },
 };
 </script>

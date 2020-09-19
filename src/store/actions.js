@@ -5,6 +5,7 @@ export default {
   async startFetchMovies({ commit }) {
     const response = await movieService.fetchAllMovies();
     commit("SET_MOVIES", response.data);
+    commit("SET_TERM", "");
   },
   async startFetchNextPage({ commit }, url) {
     const response = await movieService.fetchNextPage(url);
@@ -31,6 +32,14 @@ export default {
   },
   async startSearchMovie({ commit }, term) {
     const response = await movieService.fetchSearchedMovies(term);
+    commit("SET_MOVIES", response.data);
+    commit("SET_TERM", term);
+  },
+  async startFetchNextPageForSearchedTerm({ commit }, { term, page }) {
+    const response = await movieService.fetchNextPageForSearchedTerm(
+      page,
+      term
+    );
     commit("SET_MOVIES", response.data);
   },
 };

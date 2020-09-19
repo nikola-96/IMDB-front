@@ -8,4 +8,7 @@ export default {
   SET_ERRORS(state, errors) {
     state.errors = errors;
   },
+  SET_TERM(state, term) {
+    state.term = term;
+  },
 };

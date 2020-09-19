@@ -11,6 +11,7 @@ export default new Vuex.Store({
     errors: [],
     movies: [],
     movie: {},
+    term: "",
   },
   getters,
   mutations,

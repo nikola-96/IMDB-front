@@ -25,10 +25,26 @@ export default {
       type: Function,
       required: true,
     },
+    getTermFromState: {
+      type: String,
+      required: false,
+    },
+    startFetchNextPageForSearchedTerm: {
+      type: Function,
+      required: true,
+    },
   },
   methods: {
-    pageChangeHandler(selectedPage) {
-      this.startFetchNextPage(selectedPage);
+    async pageChangeHandler(selectedPage) {
+      if (this.getTermFromState) {
+        //if term for search exist, go to next page for explicit term
+        await this.startFetchNextPageForSearchedTerm({
+          term: this.getTermFromState,
+          page: selectedPage,
+        });
+      } else {
+        await this.startFetchNextPage(selectedPage);
+      }
     },
   },
 };

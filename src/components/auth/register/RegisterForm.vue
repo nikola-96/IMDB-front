@@ -43,9 +43,7 @@
             v-model="user.password_confirmation"
           />
         </div>
-        <button class="btn-submit btn btn-secondary" type="submit">
-          Submit
-        </button>
+        <button class="btn-submit btn btn-secondary" type="submit">Submit</button>
       </form>
     </div>
   </div>
@@ -62,7 +60,6 @@ export default {
   methods: {
     handleSubmit() {
       this.startRegisterUser(this.user, "Register");
-      this.startPostUser(this.user);
       this.$router.push("/login");
     },
   },
