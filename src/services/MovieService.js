@@ -23,7 +23,7 @@ class MovieService {
   }
   async fetchNextPageForSearchedTerm(page, term) {
     const response = await HTTP.get(
-      `${MOVIES.PAGE}${page}${MOVIES.SEARCH_TERM_PAGINATION}${term}` //fethcig next page for explicit term
+      `${MOVIES.PAGE}${page}${MOVIES.SEARCH_TERM_PAGINATION}${term}` //fetching next page for explicit term
     );
     return response;
   }
