@@ -46,4 +46,8 @@ export default {
     await movieService.incrementNumberOfLikes(id);
     commit("CHANGE_NUMBER_OF_LIKES", id);
   },
+  async startIncrementDislikes({ commit }, id) {
+    await movieService.incrementNumberOfDislikes(id);
+    commit("CHANGE_NUMBER_OF_DISLIKES", id);
+  },
 };

@@ -16,6 +16,7 @@
           :likesDislikes="movie.like_dislike"
           :movie_id="movie.id"
           :startIncrementLikes="startIncrementLikes"
+          :startIncrementDislikes="startIncrementDislikes"
         />
       </div>
     </div>
@@ -31,7 +32,7 @@ export default {
     LikeDislikeComponent,
   },
   methods: {
-    ...mapActions(["startIncrementLikes"]),
+    ...mapActions(["startIncrementLikes", "startIncrementDislikes"]),
   },
   props: {
     movie: {

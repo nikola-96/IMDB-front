@@ -13,10 +13,16 @@ export default {
   },
   CHANGE_NUMBER_OF_LIKES(state, id) {
     state.movies.data = state.movies.data.map((movie) => {
-      if (movie.like_dislike) {
-        if (movie.like_dislike.id === id) {
-          return { ...movie, ...movie.like_dislike.likes++ };
-        }
+      if (movie.like_dislike.id === id) {
+        return { ...movie, ...movie.like_dislike.likes++ };
+      }
+      return movie;
+    });
+  },
+  CHANGE_NUMBER_OF_DISLIKES(state, id) {
+    state.movies.data = state.movies.data.map((movie) => {
+      if (movie.like_dislike.id === id) {
+        return { ...movie, ...movie.like_dislike.dislikes++ };
       }
       return movie;
     });
