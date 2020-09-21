@@ -1,5 +1,5 @@
 <template>
-  <div class="single-comp-wraper">
+  <div class="single-comp-wraper" v-if="getSingleMovieFromState">
     <SingleMovieComponent :movie="getSingleMovieFromState" />
   </div>
 </template>
@@ -27,6 +27,7 @@ export default {
   async created() {
     this.id = this.$route.params.id;
     await this.startFetchSingleMovie(this.id);
+    console.lg(this.getSingleMovieFromState);
   },
 };
 </script>

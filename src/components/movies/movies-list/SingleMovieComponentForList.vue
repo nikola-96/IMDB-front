@@ -17,13 +17,14 @@
           :movie="movie"
           :startIncrementLikes="startIncrementLikes"
           :startIncrementDislikes="startIncrementDislikes"
+          :user="getUserFromState"
         />
       </div>
     </div>
   </div>
 </template>
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 import LikeDislikeComponent from "../../movies/like-dislike/LikeDislikeComponent";
 
 export default {
@@ -33,6 +34,9 @@ export default {
   },
   methods: {
     ...mapActions(["startIncrementLikes", "startIncrementDislikes"]),
+  },
+  computed: {
+    ...mapGetters(["getUserFromState"]),
   },
   props: {
     movie: {
@@ -44,6 +48,7 @@ export default {
       required: true,
     },
   },
+  created() {},
 };
 </script>
 <style scoped>

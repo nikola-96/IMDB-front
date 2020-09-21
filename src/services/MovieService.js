@@ -27,8 +27,8 @@ class MovieService {
     );
     return response;
   }
-  async incrementNumberOfLikes(id) {
-    await HTTP.put(MOVIES.INCREMENT_LIKES, { id: id });
+  async incrementNumberOfLikes(like_id, movie_id) {
+    await HTTP.put(MOVIES.INCREMENT_LIKES, { like_id, movie_id });
   }
   async incrementNumberOfDislikes(id) {
     await HTTP.put(MOVIES.INCREMENT_DISLIKES, { id: id });

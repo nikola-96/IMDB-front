@@ -42,9 +42,9 @@ export default {
     );
     commit("SET_MOVIES", response.data);
   },
-  async startIncrementLikes({ commit }, id) {
-    await movieService.incrementNumberOfLikes(id);
-    commit("CHANGE_NUMBER_OF_LIKES", id);
+  async startIncrementLikes({ commit }, { like_id, movie_id }) {
+    await movieService.incrementNumberOfLikes(like_id, movie_id);
+    commit("CHANGE_NUMBER_OF_LIKES", like_id);
   },
   async startIncrementDislikes({ commit }, id) {
     await movieService.incrementNumberOfDislikes(id);

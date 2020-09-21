@@ -34,13 +34,23 @@ export default {
       type: Function,
       required: true,
     },
+    user: {
+      type: Object,
+      required: true,
+    },
   },
   methods: {
     async likeHandler() {
-      await this.startIncrementLikes(this.likesDislikes.id);
+      await this.startIncrementLikes({
+        like_id: this.likesDislikes.id,
+        movie_id: this.movie.id,
+      });
     },
     async dislikeHandler() {
-      await this.startIncrementDislikes(this.likesDislikes.id);
+      await this.startIncrementDislikes({
+        likes_id: this.likesDislikes.id,
+        movie_id: this.movie.id,
+      });
     },
   },
 };
