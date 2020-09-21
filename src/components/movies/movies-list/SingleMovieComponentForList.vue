@@ -1,20 +1,18 @@
 <template>
-  <div
-    class="card mb-3 single"
-    style="max-width: 540px;"
-    @click="redirectToSingleMovie(movie.id)"
-  >
+  <div class="card mb-3" style="max-width: 540px;">
     <div class="row no-gutters">
       <div class="col-md-4">
         <img :src="movie.image_url" class="card-img" />
       </div>
       <div class="col-md-8">
         <div class="card-body">
-          <h5 class="card-title">{{ movie.title }}</h5>
+          <h5 class="card-title title" @click="redirectToSingleMovie(movie.id)">
+            {{ movie.title }}
+          </h5>
           <p class="card-text">{{ movie.description.slice(0, 150) }}...</p>
           <p class="card-text"></p>
         </div>
-        <LikeDislikeComponent />
+        <LikeDislikeComponent :likesDislikes="movie.like_dislike" />
       </div>
     </div>
   </div>
@@ -40,7 +38,7 @@ export default {
 };
 </script>
 <style scoped>
-.single:hover {
+.title:hover {
   cursor: pointer;
 }
 </style>

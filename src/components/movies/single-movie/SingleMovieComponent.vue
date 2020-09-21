@@ -6,17 +6,23 @@
       </div>
       <div class="col-md-8">
         <div class="card-body">
-          <h5 class="card-title">{{movie.title}}</h5>
-          <p class="card-text">{{movie.description}}</p>
+          <h5 class="card-title">{{ movie.title }}</h5>
+          <p class="card-text">{{ movie.description }}</p>
           <p class="card-text"></p>
         </div>
+        <LikeDislikeComponent />
       </div>
     </div>
   </div>
 </template>
 <script>
+import LikeDislikeComponent from "../../movies/like-dislike/LikeDislikeComponent";
+
 export default {
   name: "SingleMovieComponent",
+  components: {
+    LikeDislikeComponent,
+  },
   props: {
     movie: {
       type: Object,
