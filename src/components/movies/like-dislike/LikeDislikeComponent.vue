@@ -3,8 +3,8 @@
     <VueLikeDislikeButtons
       @like="likeHandler"
       @dislike="dislikeHandler"
-      :likes="likes"
-      :dislikes="dislikes"
+      :likes="computeNumberLikes()"
+      :dislikes="computeNumberDislikes()"
     />
   </div>
 </template>
@@ -35,15 +35,28 @@ export default {
     dislikeHandler() {
       console.log("Dislike");
     },
-  },
-  beforeMount() {
-    if (this.likesDislikes) {
-      if (this.likesDislikes.likes) {
-        this.likes = this.likesDislikes.likes;
-      } else if (this.likesDislikes.dislikes) {
-        this.dislikes = this.likesDislikes.dislikes;
+    computeNumberDislikes() {
+      if (this.likesDislikes) {
+        if (this.likesDislikes.dislikes) {
+          return this.likesDislikes.dislikes;
+        } else {
+          return 0;
+        }
+      } else {
+        return 0;
       }
-    }
+    },
+    computeNumberLikes() {
+      if (this.likesDislikes) {
+        if (this.likesDislikes.likes) {
+          return this.likesDislikes.likes;
+        } else {
+          return 0;
+        }
+      } else {
+        return 0;
+      }
+    },
   },
 };
 </script>
