@@ -27,4 +27,7 @@ export default {
       return movie;
     });
   },
+  SET_USER(state, user) {
+    state.user = user;
+  },
 };

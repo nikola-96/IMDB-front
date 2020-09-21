@@ -9,12 +9,16 @@ class AuthService {
     await HTTP.post(AUTH.REGISTER, user);
   }
 
-
   login({ email, password }) {
     return HTTP.post(AUTH.LOGIN, { email, password }).then((response) => {
       window.localStorage.setItem("loginToken", response.data.access_token);
       this.setAxiosDefaultAuthorizationHeader();
     });
+  }
+  async getUser() {
+    const response = await HTTP.post(AUTH.GET_USER);
+
+    return response.data;
   }
 
   setAxiosDefaultAuthorizationHeader() {

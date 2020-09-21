@@ -5,6 +5,7 @@
       @dislike="dislikeHandler"
       :likes="likesDislikes.likes"
       :dislikes="likesDislikes.dislikes"
+      :is-disabled="false"
     />
   </div>
 </template>
@@ -21,8 +22,8 @@ export default {
       type: Object,
       required: false,
     },
-    movie_id: {
-      type: Number,
+    movie: {
+      type: Object,
       required: true,
     },
     startIncrementLikes: {

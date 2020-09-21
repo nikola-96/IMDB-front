@@ -10,4 +10,5 @@ export const MOVIES = {
 export const AUTH = {
   LOGIN: "/auth/login",
   REGISTER: "/auth/register",
+  GET_USER: "/auth/me",
 };

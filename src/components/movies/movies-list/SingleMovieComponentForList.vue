@@ -14,7 +14,7 @@
         </div>
         <LikeDislikeComponent
           :likesDislikes="movie.like_dislike"
-          :movie_id="movie.id"
+          :movie="movie"
           :startIncrementLikes="startIncrementLikes"
           :startIncrementDislikes="startIncrementDislikes"
         />

@@ -41,6 +41,7 @@ export default {
       "startFetchNextPage",
       "startSearchMovie",
       "startFetchNextPageForSearchedTerm",
+      "getAuthUser",
     ]),
     redirectToSingleMovie(id) {
       this.$router.push(`/movie/${id}`);
@@ -51,6 +52,7 @@ export default {
   },
   async created() {
     await this.startFetchMovies();
+    await this.getAuthUser();
   },
 };
 </script>

@@ -50,4 +50,8 @@ export default {
     await movieService.incrementNumberOfDislikes(id);
     commit("CHANGE_NUMBER_OF_DISLIKES", id);
   },
+  async getAuthUser({ commit }) {
+    const response = await authService.getUser();
+    commit("SET_USER", response);
+  },
 };
