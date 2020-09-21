@@ -2,10 +2,13 @@
   <div id="app">
     <div
       id="nav"
-      v-if="this.$router.currentRoute.name !== 'Login' && this.$router.currentRoute.name !== 'Register'"
+      v-if="
+        this.$router.currentRoute.name !== 'Login' &&
+          this.$router.currentRoute.name !== 'Register'
+      "
     >
-      <router-link to="/">Home</router-link>|
-      <router-link to="/about">About</router-link>
+      <!-- <router-link to="/">Home</router-link>|
+      <router-link to="/about">About</router-link> -->
     </div>
     <router-view />
   </div>
