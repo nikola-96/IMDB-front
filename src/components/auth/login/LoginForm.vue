@@ -41,9 +41,9 @@ export default {
     },
   },
   methods: {
-    handleSubmit() {
-      this.startLoginUser(this.user);
-      this.$router.push("/");
+    async handleSubmit() {
+      await this.startLoginUser(this.user);
+      this.$router.push("/movies");
     },
   },
 };

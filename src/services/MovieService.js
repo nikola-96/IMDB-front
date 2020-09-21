@@ -4,6 +4,7 @@ import HTTP from "./BaseService";
 class MovieService {
   async fetchAllMovies() {
     const response = await HTTP.get(MOVIES.GET_ALL);
+
     return response;
   }
   async fetchSingleMovie(id) {
@@ -13,6 +14,17 @@ class MovieService {
   }
   async fetchNextPage(page) {
     const response = await HTTP.get(MOVIES.PAGE + page);
+    return response;
+  }
+  async fetchSearchedMovies(term) {
+    const response = await HTTP.get(`${MOVIES.SEARCH_TERM}${term}`);
+
+    return response;
+  }
+  async fetchNextPageForSearchedTerm(page, term) {
+    const response = await HTTP.get(
+      `${MOVIES.PAGE}${page}${MOVIES.SEARCH_TERM_PAGINATION}${term}` //fetching next page for explicit term
+    );
     return response;
   }
 }
