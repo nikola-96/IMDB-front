@@ -27,6 +27,9 @@ class MovieService {
     );
     return response;
   }
+  async incrementNumberOfLikes(id) {
+    await HTTP.put(MOVIES.INCREMENT_LIKES, { id: id });
+  }
 }
 
 const movieService = new MovieService();

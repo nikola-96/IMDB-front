@@ -12,18 +12,26 @@
           <p class="card-text">{{ movie.description.slice(0, 150) }}...</p>
           <p class="card-text"></p>
         </div>
-        <LikeDislikeComponent :likesDislikes="movie.like_dislike" />
+        <LikeDislikeComponent
+          :likesDislikes="movie.like_dislike"
+          :movie_id="movie.id"
+          :startIncrementLikes="startIncrementLikes"
+        />
       </div>
     </div>
   </div>
 </template>
 <script>
+import { mapActions } from "vuex";
 import LikeDislikeComponent from "../../movies/like-dislike/LikeDislikeComponent";
 
 export default {
   name: "SingleMovieComponent",
   components: {
     LikeDislikeComponent,
+  },
+  methods: {
+    ...mapActions(["startIncrementLikes"]),
   },
   props: {
     movie: {

@@ -21,6 +21,14 @@ export default {
       type: Object,
       required: false,
     },
+    movie_id: {
+      type: Number,
+      required: true,
+    },
+    startIncrementLikes: {
+      type: Function,
+      required: true,
+    },
   },
   data() {
     return {
@@ -30,7 +38,7 @@ export default {
   },
   methods: {
     likeHandler() {
-      console.log("Like");
+      this.startIncrementLikes(this.likesDislikes.id);
     },
     dislikeHandler() {
       console.log("Dislike");

@@ -11,4 +11,14 @@ export default {
   SET_TERM(state, term) {
     state.term = term;
   },
+  CHANGE_NUMBER_OF_LIKES(state, id) {
+    state.movies.data = state.movies.data.map((movie) => {
+      if (movie.like_dislike) {
+        if (movie.like_dislike.id === id) {
+          return { ...movie, ...movie.like_dislike.likes++ };
+        }
+      }
+      return movie;
+    });
+  },
 };
