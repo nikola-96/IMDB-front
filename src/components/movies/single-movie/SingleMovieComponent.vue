@@ -11,7 +11,7 @@
           <p class="card-text"></p>
         </div>
         <LikeDislikeComponent
-          v-if="movie"
+          v-if="movie.like_dislike"
           :likesDislikes="movie.like_dislike"
           :movie="movie"
           :startIncrementLikes="startIncrementLikes"
@@ -42,6 +42,9 @@ export default {
       type: Object,
       requred: true,
     },
+  },
+  created() {
+    console.log(this.movie);
   },
 };
 </script>

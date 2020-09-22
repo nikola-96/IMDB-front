@@ -48,7 +48,9 @@ export default {
       required: true,
     },
   },
-  created() {},
+  created() {
+    console.log(this.movie);
+  },
 };
 </script>
 <style scoped>

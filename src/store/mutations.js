@@ -14,6 +14,8 @@ export default {
   CHANGE_NUMBER_OF_LIKES(state, id) {
     state.movies.data = state.movies.data.map((movie) => {
       if (movie.like_dislike.id === id) {
+        console.log(movie);
+
         return { ...movie, ...movie.like_dislike.likes++ };
       }
       return movie;

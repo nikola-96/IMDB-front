@@ -27,7 +27,7 @@ export default {
   async created() {
     this.id = this.$route.params.id;
     await this.startFetchSingleMovie(this.id);
-    console.lg(this.getSingleMovieFromState);
+    console.log(this.getSingleMovieFromState);
   },
 };
 </script>
