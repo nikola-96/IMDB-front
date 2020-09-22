@@ -5,6 +5,7 @@
       :startSearchMovie="startSearchMovie"
       :startFetchMovies="startFetchMovies"
     />
+    <DropdownComponent class="dropdown" />
     <div
       class="wraper"
       v-for="movie in getAllMoviesFromState.data"
@@ -27,6 +28,7 @@
 import PaginationComponent from "../../components/movies/pagination/PaginationComponent";
 import SingleMovieComponentForList from "../../components/movies/movies-list/SingleMovieComponentForList";
 import SearchComponent from "../../components/movies/search-component/SearchComponent";
+import DropdownComponent from "../../components/movies/dropown/DropdownComponent";
 import { mapActions, mapGetters } from "vuex";
 export default {
   name: "MoviesList",
@@ -34,6 +36,7 @@ export default {
     PaginationComponent,
     SingleMovieComponentForList,
     SearchComponent,
+    DropdownComponent,
   },
   methods: {
     ...mapActions([
@@ -60,6 +63,10 @@ export default {
   justify-content: center;
 }
 .input-search {
-  margin-bottom: 15px;
+  margin-bottom: -30px;
+}
+.dropdown {
+  margin-left: 420px;
+  margin-bottom: 10px;
 }
 </style>
