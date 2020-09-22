@@ -51,4 +51,8 @@ export default {
     const response = await commentService.getComments(movie_id);
     commit("SET_COMMENTS", response.data);
   },
+  async startFetchMoreComments({ commit }, { movie_id, page }) {
+    const response = await commentService.fetchMoreComments(movie_id, page);
+    commit("ADD_COMMENTS", response.data);
+  },
 };

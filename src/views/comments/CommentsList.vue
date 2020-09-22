@@ -1,10 +1,12 @@
 <template>
   <div>
-    <SingleCommentComponent
-      v-for="comment in comments"
-      :key="comment.id"
-      :comment="comment"
-    />
+    <SingleCommentComponent v-for="comment in comments.data" :key="comment.id" :comment="comment" />
+    <button
+      :disabled="this.comments.next_page_url ? false : true "
+      type="button"
+      class="btn btn-outline-secondary btn-comments"
+      @click="handleShowMore"
+    >Show More</button>
   </div>
 </template>
 <script>
@@ -17,12 +19,32 @@ export default {
   },
   props: {
     comments: {
-      type: Array,
+      type: [Array, Object],
+      required: true,
+    },
+    startFetchMoreComments: {
+      type: Function,
+      required: true,
+    },
+    movie: {
+      type: Object,
       required: true,
     },
   },
-  created() {
-    console.log(this.comments);
+  methods: {
+    async handleShowMore() {
+      await this.startFetchMoreComments({
+        movie_id: this.movie.id,
+        page: this.comments.next_page_url[
+          this.comments.next_page_url.length - 1
+        ],
+      });
+    },
   },
 };
 </script>
+<style scoped>
+.btn-comments {
+  margin-top: 5px;
+}
+</style>
