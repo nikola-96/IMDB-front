@@ -14,4 +14,7 @@ export default {
   ADD_COMMENT(state, comment) {
     state.movie.comments = [...state.movie.comments, comment];
   },
+  SET_COMMENTS(state, comments) {
+    state.comments = comments;
+  },
 };

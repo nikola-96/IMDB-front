@@ -11,5 +11,6 @@ export const AUTH = {
 };
 
 export const COMMENTS = {
+  GET: "/movies/comments?movie_id=",
   POST: "/movies/comments",
 };

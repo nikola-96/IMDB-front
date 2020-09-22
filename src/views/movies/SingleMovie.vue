@@ -5,10 +5,7 @@
       :startPostComment="startPostComment"
       :movie="getSingleMovieFromState"
     />
-    <CommentsList
-      v-if="getSingleMovieFromState.comments"
-      :comments="getSingleMovieFromState.comments"
-    />
+    <CommentsList :comments="getCommentsFromState" />
   </div>
 </template>
 
@@ -26,10 +23,14 @@ export default {
     CommentsList,
   },
   methods: {
-    ...mapActions(["startFetchSingleMovie", "startPostComment"]),
+    ...mapActions([
+      "startFetchSingleMovie",
+      "startPostComment",
+      "startFetchComents",
+    ]),
   },
   computed: {
-    ...mapGetters(["getSingleMovieFromState"]),
+    ...mapGetters(["getSingleMovieFromState", "getCommentsFromState"]),
   },
   data() {
     return {
@@ -39,6 +40,7 @@ export default {
   async created() {
     this.id = this.$route.params.id;
     await this.startFetchSingleMovie(this.id);
+    await this.startFetchComents(this.id);
   },
 };
 </script>

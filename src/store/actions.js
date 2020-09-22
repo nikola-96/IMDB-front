@@ -47,4 +47,8 @@ export default {
     const response = await commentService.postComment(comment);
     commit("ADD_COMMENT", response.data);
   },
+  async startFetchComents({ commit }, movie_id) {
+    const response = await commentService.getComments(movie_id);
+    commit("SET_COMMENTS", response.data);
+  },
 };
