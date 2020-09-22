@@ -11,4 +11,7 @@ export default {
   SET_TERM(state, term) {
     state.term = term;
   },
+  SET_GENRES(state, genres) {
+    state.genres = genres;
+  },
 };

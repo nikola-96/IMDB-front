@@ -42,4 +42,8 @@ export default {
     );
     commit("SET_MOVIES", response.data);
   },
+  async startFetchAllGenres({ commit }) {
+    const response = await movieService.fetchAllGenres();
+    commit("SET_GENRES", response.data);
+  },
 };
