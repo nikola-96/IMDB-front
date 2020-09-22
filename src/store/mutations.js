@@ -11,4 +11,7 @@ export default {
   SET_TERM(state, term) {
     state.term = term;
   },
+  ADD_COMMENT(state, comment) {
+    state.movie.comments = [...state.movie.comments, comment];
+  },
 };

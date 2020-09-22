@@ -1,7 +1,10 @@
 <template>
-  <div class="single-comp-wraper">
+  <div class="single-comp-wraper" v-if="getSingleMovieFromState">
     <SingleMovieComponent :movie="getSingleMovieFromState" />
-    <CommentFormComponent />
+    <CommentFormComponent
+      :startPostComment="startPostComment"
+      :movie="getSingleMovieFromState"
+    />
     <CommentsList
       v-if="getSingleMovieFromState.comments"
       :comments="getSingleMovieFromState.comments"
@@ -23,7 +26,7 @@ export default {
     CommentsList,
   },
   methods: {
-    ...mapActions(["startFetchSingleMovie"]),
+    ...mapActions(["startFetchSingleMovie", "startPostComment"]),
   },
   computed: {
     ...mapGetters(["getSingleMovieFromState"]),
