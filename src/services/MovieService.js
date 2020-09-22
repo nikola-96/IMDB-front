@@ -32,6 +32,11 @@ class MovieService {
 
     return response;
   }
+  async fetchGenreMovie(id) {
+    const response = await HTTP.get(`${MOVIES.GET_MOVIES_BY_GENRE}${id}`);
+
+    return response;
+  }
 }
 
 const movieService = new MovieService();

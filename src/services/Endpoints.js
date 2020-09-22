@@ -5,6 +5,7 @@ export const MOVIES = {
   SEARCH_TERM: "/movies?term=",
   SEARCH_TERM_PAGINATION: "&term=",
   GET_ALL_GENRES: "/movies/genres",
+  GET_MOVIES_BY_GENRE: "/movies/genre?genre=",
 };
 export const AUTH = {
   LOGIN: "/auth/login",

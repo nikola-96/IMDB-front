@@ -9,10 +9,16 @@
         aria-haspopup="true"
         aria-expanded="false"
       >
-        Dropright
+        Genres
       </button>
       <div class="dropdown-menu">
-        <!-- Dropdown menu links -->
+        <a
+          class="dropdown-item menu-item"
+          v-for="genre in genres"
+          :key="genre.id"
+          @click="handleClick(genre.id)"
+          >{{ genre.name }}</a
+        >
       </div>
     </div>
   </div>
@@ -20,5 +26,28 @@
 <script>
 export default {
   name: "DropdownComponent",
+  props: {
+    genres: {
+      type: Array,
+      required: true,
+    },
+    startFetchGenreMovie: {
+      type: Function,
+      required: true,
+    },
+  },
+  methods: {
+    async handleClick(id) {
+      await this.startFetchGenreMovie(id);
+    },
+  },
 };
 </script>
+<style script>
+.menu-item:hover {
+  cursor: pointer;
+}
+.menu-item {
+  text-transform: capitalize;
+}
+</style>

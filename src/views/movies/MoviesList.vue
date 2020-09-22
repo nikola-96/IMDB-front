@@ -5,7 +5,12 @@
       :startSearchMovie="startSearchMovie"
       :startFetchMovies="startFetchMovies"
     />
-    <DropdownComponent class="dropdown" :genres="getGenresFromState" />
+    <DropdownComponent
+      v-if="getGenresFromState"
+      class="dropdown"
+      :genres="getGenresFromState"
+      :startFetchGenreMovie="startFetchGenreMovie"
+    />
     <div
       class="wraper"
       v-for="movie in getAllMoviesFromState.data"
@@ -45,6 +50,7 @@ export default {
       "startSearchMovie",
       "startFetchNextPageForSearchedTerm",
       "startFetchAllGenres",
+      "startFetchGenreMovie",
     ]),
     redirectToSingleMovie(id) {
       this.$router.push(`/movie/${id}`);

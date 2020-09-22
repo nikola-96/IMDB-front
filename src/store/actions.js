@@ -46,4 +46,8 @@ export default {
     const response = await movieService.fetchAllGenres();
     commit("SET_GENRES", response.data);
   },
+  async startFetchGenreMovie({ commit }, genre) {
+    const response = await movieService.fetchGenreMovie(genre);
+    commit("SET_MOVIES", response.data);
+  },
 };
