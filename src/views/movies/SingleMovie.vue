@@ -2,12 +2,17 @@
   <div class="single-comp-wraper">
     <SingleMovieComponent :movie="getSingleMovieFromState" />
     <CommentFormComponent />
+    <CommentsList
+      v-if="getSingleMovieFromState.comments"
+      :comments="getSingleMovieFromState.comments"
+    />
   </div>
 </template>
 
 <script>
 import SingleMovieComponent from "../../components/movies/single-movie/SingleMovieComponent";
-import CommentFormComponent from "../../components/movies/movie-comments/CommetFormComponent";
+import CommentFormComponent from "../../components/comments/movie-comments/CommetFormComponent";
+import CommentsList from "../comments/CommentsList";
 import { mapActions, mapGetters } from "vuex";
 
 export default {
@@ -15,6 +20,7 @@ export default {
   components: {
     SingleMovieComponent,
     CommentFormComponent,
+    CommentsList,
   },
   methods: {
     ...mapActions(["startFetchSingleMovie"]),
