@@ -13,6 +13,7 @@ export default new Vuex.Store({
     movie: {},
     term: "",
     genres: [],
+    genre: undefined,
   },
   getters,
   mutations,

@@ -37,6 +37,12 @@ class MovieService {
 
     return response;
   }
+  async fetchNextPageForGenre(page, genre) {
+    const response = await HTTP.get(
+      `${MOVIES.GET_ALL}${MOVIES.GET_MOVIES_BY_GENRE_FOR_PAGG}${page}${MOVIES.ONLY_PAGE}${genre}` //fetching next page for explicit genre
+    );
+    return response;
+  }
 }
 
 const movieService = new MovieService();

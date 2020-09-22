@@ -19,6 +19,8 @@
           @click="handleClick(genre.id)"
           >{{ genre.name }}</a
         >
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item menu-item" @click="handleFetchAll">Show all</a>
       </div>
     </div>
   </div>
@@ -35,10 +37,17 @@ export default {
       type: Function,
       required: true,
     },
+    startFetchMovies: {
+      type: Function,
+      required: true,
+    },
   },
   methods: {
     async handleClick(id) {
       await this.startFetchGenreMovie(id);
+    },
+    async handleFetchAll() {
+      await this.startFetchMovies();
     },
   },
 };

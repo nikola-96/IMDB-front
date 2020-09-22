@@ -14,4 +14,7 @@ export default {
   SET_GENRES(state, genres) {
     state.genres = genres;
   },
+  SET_CHOSEN_GENRE(state, genre) {
+    state.genre = genre;
+  },
 };

@@ -4,4 +4,5 @@ export default {
   getErrorsFromState: (state) => state.errors,
   getTermFromState: (state) => state.term,
   getGenresFromState: (state) => state.genres,
+  getSearchedGenreFromState: (state) => state.genre,
 };

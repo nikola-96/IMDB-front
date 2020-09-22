@@ -10,6 +10,7 @@
       class="dropdown"
       :genres="getGenresFromState"
       :startFetchGenreMovie="startFetchGenreMovie"
+      :startFetchMovies="startFetchMovies"
     />
     <div
       class="wraper"
@@ -26,6 +27,8 @@
       :startFetchNextPage="startFetchNextPage"
       :getTermFromState="getTermFromState"
       :startFetchNextPageForSearchedTerm="startFetchNextPageForSearchedTerm"
+      :getSearchedGenreFromState="getSearchedGenreFromState"
+      :startFetchNextPageForGenre="startFetchNextPageForGenre"
     />
   </div>
 </template>
@@ -51,6 +54,7 @@ export default {
       "startFetchNextPageForSearchedTerm",
       "startFetchAllGenres",
       "startFetchGenreMovie",
+      "startFetchNextPageForGenre",
     ]),
     redirectToSingleMovie(id) {
       this.$router.push(`/movie/${id}`);
@@ -61,6 +65,7 @@ export default {
       "getAllMoviesFromState",
       "getTermFromState",
       "getGenresFromState",
+      "getSearchedGenreFromState",
     ]),
   },
   async created() {
