@@ -3,4 +3,5 @@ export default {
   getSingleMovieFromState: (state) => state.movie,
   getErrorsFromState: (state) => state.errors,
   getTermFromState: (state) => state.term,
+  getCommentsFromState: (state) => state.comments,
 };

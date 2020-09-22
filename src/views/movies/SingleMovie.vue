@@ -1,23 +1,36 @@
 <template>
-  <div class="single-comp-wraper">
+  <div class="single-comp-wraper" v-if="getSingleMovieFromState">
     <SingleMovieComponent :movie="getSingleMovieFromState" />
+    <CommentFormComponent
+      :startPostComment="startPostComment"
+      :movie="getSingleMovieFromState"
+    />
+    <CommentsList :comments="getCommentsFromState" />
   </div>
 </template>
 
 <script>
 import SingleMovieComponent from "../../components/movies/single-movie/SingleMovieComponent";
+import CommentFormComponent from "../../components/comments/movie-comments/CommetFormComponent";
+import CommentsList from "../comments/CommentsList";
 import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "SingleMovie",
   components: {
     SingleMovieComponent,
+    CommentFormComponent,
+    CommentsList,
   },
   methods: {
-    ...mapActions(["startFetchSingleMovie"]),
+    ...mapActions([
+      "startFetchSingleMovie",
+      "startPostComment",
+      "startFetchComents",
+    ]),
   },
   computed: {
-    ...mapGetters(["getSingleMovieFromState"]),
+    ...mapGetters(["getSingleMovieFromState", "getCommentsFromState"]),
   },
   data() {
     return {
@@ -27,6 +40,7 @@ export default {
   async created() {
     this.id = this.$route.params.id;
     await this.startFetchSingleMovie(this.id);
+    await this.startFetchComents(this.id);
   },
 };
 </script>
@@ -34,5 +48,7 @@ export default {
 .single-comp-wraper {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 </style>

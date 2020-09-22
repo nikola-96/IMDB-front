@@ -11,4 +11,10 @@ export default {
   SET_TERM(state, term) {
     state.term = term;
   },
+  ADD_COMMENT(state, comment) {
+    state.comments = [...state.comments, comment];
+  },
+  SET_COMMENTS(state, comments) {
+    state.comments = comments;
+  },
 };

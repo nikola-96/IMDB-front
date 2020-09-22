@@ -9,3 +9,8 @@ export const AUTH = {
   LOGIN: "/auth/login",
   REGISTER: "/auth/register",
 };
+
+export const COMMENTS = {
+  GET: "/movies/comments?movie_id=",
+  POST: "/movies/comments",
+};
