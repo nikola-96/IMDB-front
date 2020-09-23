@@ -2,7 +2,7 @@
   <div>
     <SingleCommentComponent v-for="comment in comments.data" :key="comment.id" :comment="comment" />
     <button
-      :disabled="this.comments.next_page_url ? false : true "
+      :disabled="!this.comments.next_page_url"
       type="button"
       class="btn btn-outline-secondary btn-comments"
       @click="handleShowMore"
