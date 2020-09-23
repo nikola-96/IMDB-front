@@ -5,7 +5,11 @@
       :startPostComment="startPostComment"
       :movie="getSingleMovieFromState"
     />
-    <CommentsList :comments="getCommentsFromState" />
+    <CommentsList
+      :comments="getCommentsFromState"
+      :startFetchMoreComments="startFetchMoreComments"
+      :movie="getSingleMovieFromState"
+    />
   </div>
 </template>
 
@@ -27,6 +31,7 @@ export default {
       "startFetchSingleMovie",
       "startPostComment",
       "startFetchComents",
+      "startFetchMoreComments",
     ]),
   },
   computed: {

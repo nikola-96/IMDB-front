@@ -12,6 +12,13 @@ class CommentService {
 
     return response;
   }
+  async fetchMoreComments(movie_id, page) {
+    const response = await HTTP.get(
+      COMMENTS.GET + movie_id + COMMENTS.PAGE + page
+    );
+
+    return response;
+  }
 }
 const commentService = new CommentService();
 
