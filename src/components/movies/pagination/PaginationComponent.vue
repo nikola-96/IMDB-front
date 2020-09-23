@@ -33,6 +33,14 @@ export default {
       type: Function,
       required: true,
     },
+    startFetchNextPageForGenre: {
+      type: Function,
+      reqired: true,
+    },
+    getSearchedGenreFromState: {
+      type: Number,
+      required: false,
+    },
   },
   methods: {
     async pageChangeHandler(selectedPage) {
@@ -40,6 +48,11 @@ export default {
         //if term for search exist, go to next page for explicit term
         await this.startFetchNextPageForSearchedTerm({
           term: this.getTermFromState,
+          page: selectedPage,
+        });
+      } else if (this.getSearchedGenreFromState) {
+        await this.startFetchNextPageForGenre({
+          genre: this.getSearchedGenreFromState,
           page: selectedPage,
         });
       } else {

@@ -27,6 +27,32 @@ class MovieService {
     );
     return response;
   }
+  async fetchAllGenres() {
+    const response = await HTTP.get(MOVIES.GET_ALL_GENRES);
+
+    return response;
+  }
+  async fetchGenreMovie(id) {
+    const response = await HTTP.get(`${MOVIES.GET_MOVIES_BY_GENRE}${id}`);
+
+    return response;
+  }
+  async fetchNextPageForGenre(page, genre) {
+    const response = await HTTP.get(
+      `${MOVIES.GET_ALL}${MOVIES.GET_MOVIES_BY_GENRE_FOR_PAGG}${page}${MOVIES.ONLY_PAGE}${genre}` //fetching next page for explicit genre
+    );
+    return response;
+  }
+  async fetchGenreForSearhTerm(term, genre) {
+    const response = await HTTP.get(
+      MOVIES.GET_ALL +
+        MOVIES.SEARCH_MOVIE_GENRE +
+        genre +
+        MOVIES.SEARCH_TERM_PAGINATION +
+        term
+    );
+    return response;
+  }
 }
 
 const movieService = new MovieService();

@@ -11,6 +11,12 @@ export default {
   SET_TERM(state, term) {
     state.term = term;
   },
+  SET_GENRES(state, genres) {
+    state.genres = genres;
+  },
+  SET_CHOSEN_GENRE(state, genre) {
+    state.genre = genre;
+  },
   ADD_COMMENT(state, comment) {
     state.comments.data = [...state.comments.data, comment];
   },
