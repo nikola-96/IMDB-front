@@ -58,6 +58,12 @@ class MovieService {
     );
     return response;
   }
+  async incrementLike(id) {
+    await HTTP.post(MOVIES.LIKE_MOVIE, id);
+  }
+  async incrementDislike(id) {
+    await HTTP.post(MOVIES.DISLIKE_MOVIE, id);
+  }
 }
 
 const movieService = new MovieService();

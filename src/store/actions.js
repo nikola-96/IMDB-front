@@ -79,4 +79,12 @@ export default {
     commit("SET_CHOSEN_GENRE", genre);
     commit("SET_TERM", term);
   },
+  async startIncrementLike({ commit }, like_id) {
+    // await movieService.incrementLike(like_id);
+    commit("INCREMENT_NUM_OF_LIKES_MOVIES", like_id);
+  },
+  async startIncrementDislike({ commit }, like_id) {
+    // await movieService.incrementDislike(like_id);
+    commit("INCREMENT_NUM_OF_DISLIKES_MOVIES", like_id);
+  },
 };

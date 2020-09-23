@@ -31,4 +31,24 @@ export default {
   SET_RELATED_MOVIES(state, movies) {
     state.relatedMovies = movies;
   },
+  INCREMENT_NUM_OF_LIKES(state, id) {
+    state.movies.data = state.movies.data.map((movie) => {
+      if (movie.like) {
+        if (movie.like.id === id) {
+          return { ...movie, ...movie.like.likes++ };
+        }
+      }
+      return movie;
+    });
+  },
+  INCREMENT_NUM_OF_DISLIKES(state, id) {
+    state.movies.data = state.movies.data.map((movie) => {
+      if (movie.like) {
+        if (movie.like.id === id) {
+          return { ...movie, ...movie.like.dislikes++ };
+        }
+      }
+      return movie;
+    });
+  },
 };
