@@ -15,6 +15,7 @@ export default new Vuex.Store({
     genres: [],
     genre: undefined,
     comments: [],
+    relatedMovies: [],
   },
   getters,
   mutations,

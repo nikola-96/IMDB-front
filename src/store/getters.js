@@ -6,4 +6,5 @@ export default {
   getGenresFromState: (state) => state.genres,
   getSearchedGenreFromState: (state) => state.genre,
   getCommentsFromState: (state) => state.comments,
+  getRelatedMoviesFromState: (state) => state.relatedMovies,
 };

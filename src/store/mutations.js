@@ -28,4 +28,7 @@ export default {
   SET_COMMENTS(state, comments) {
     state.comments = comments;
   },
+  SET_RELATED_MOVIES(state, movies) {
+    state.relatedMovies = movies;
+  },
 };
