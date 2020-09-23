@@ -8,7 +8,9 @@
       />
       <CommentsList :comments="getCommentsFromState" />
     </div>
-    <aside class="side"><RelatedMoviesComponent /></aside>
+    <aside class="side">
+      <RelatedMoviesComponent :movies="getRelatedMoviesFromState" />
+    </aside>
   </div>
 </template>
 
@@ -32,10 +34,15 @@ export default {
       "startFetchSingleMovie",
       "startPostComment",
       "startFetchComents",
+      "startFetchRelatedMovies",
     ]),
   },
   computed: {
-    ...mapGetters(["getSingleMovieFromState", "getCommentsFromState"]),
+    ...mapGetters([
+      "getSingleMovieFromState",
+      "getCommentsFromState",
+      "getRelatedMoviesFromState",
+    ]),
   },
   data() {
     return {
@@ -46,7 +53,7 @@ export default {
     this.id = this.$route.params.id;
     await this.startFetchSingleMovie(this.id);
     await this.startFetchComents(this.id);
-    console.log(this.getSingleMovieFromState.genre_id);
+    await this.startFetchRelatedMovies(this.getSingleMovieFromState.genre_id);
   },
 };
 </script>

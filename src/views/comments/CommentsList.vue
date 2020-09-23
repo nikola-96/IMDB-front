@@ -21,8 +21,5 @@ export default {
       required: true,
     },
   },
-  created() {
-    console.log(this.comments);
-  },
 };
 </script>
