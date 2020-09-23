@@ -14,6 +14,7 @@ export default new Vuex.Store({
     term: "",
     genres: [],
     genre: undefined,
+    comments: [],
   },
   getters,
   mutations,

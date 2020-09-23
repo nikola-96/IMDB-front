@@ -1,5 +1,6 @@
 import movieService from "../services/MovieService";
 import authService from "../services/AuthService";
+import commentService from "../services/CommentService";
 
 export default {
   async startFetchMovies({ commit }) {
@@ -54,5 +55,13 @@ export default {
   async startFetchNextPageForGenre({ commit }, { genre, page }) {
     const response = await movieService.fetchNextPageForGenre(genre, page);
     commit("SET_MOVIES", response.data);
+  },
+  async startPostComment({ commit }, comment) {
+    const response = await commentService.postComment(comment);
+    commit("ADD_COMMENT", response.data);
+  },
+  async startFetchComents({ commit }, movie_id) {
+    const response = await commentService.getComments(movie_id);
+    commit("SET_COMMENTS", response.data);
   },
 };

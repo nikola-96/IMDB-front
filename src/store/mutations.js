@@ -17,4 +17,10 @@ export default {
   SET_CHOSEN_GENRE(state, genre) {
     state.genre = genre;
   },
+  ADD_COMMENT(state, comment) {
+    state.comments = [...state.comments, comment];
+  },
+  SET_COMMENTS(state, comments) {
+    state.comments = comments;
+  },
 };

@@ -5,4 +5,5 @@ export default {
   getTermFromState: (state) => state.term,
   getGenresFromState: (state) => state.genres,
   getSearchedGenreFromState: (state) => state.genre,
+  getCommentsFromState: (state) => state.comments,
 };
