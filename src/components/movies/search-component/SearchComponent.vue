@@ -21,10 +21,20 @@ export default {
       type: Function,
       required: true,
     },
+    genre: {
+      type: Number,
+      required: false,
+    },
+    startFetchGenreForSearhTerm: {
+      type: Function,
+      required: true,
+    },
   },
   methods: {
     async handleSearch(term) {
-      if (term) {
+      if (term && this.genre) {
+        this.startFetchGenreForSearhTerm({ term: term, genre: this.genre });
+      } else if (term) {
         await this.startSearchMovie(term);
       } else {
         await this.startFetchMovies();

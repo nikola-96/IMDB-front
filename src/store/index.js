@@ -12,6 +12,8 @@ export default new Vuex.Store({
     movies: [],
     movie: {},
     term: "",
+    genres: [],
+    genre: undefined,
     comments: [],
   },
   getters,
