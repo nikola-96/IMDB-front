@@ -1,6 +1,13 @@
 <template>
-  <div>
+  <div class="wraper-asaide">
     <div class="single-comp-wraper" v-if="getSingleMovieFromState">
+      <button
+        type="button"
+        class="btn btn-light btn-redirect"
+        @click="() => this.$router.push('/movies')"
+      >
+        Go back
+      </button>
       <SingleMovieComponent :movie="getSingleMovieFromState" />
       <CommentFormComponent
         :startPostComment="startPostComment"
@@ -9,7 +16,12 @@
       <CommentsList :comments="getCommentsFromState" />
     </div>
     <aside class="side">
-      <RelatedMoviesComponent :movies="getRelatedMoviesFromState" />
+      <RelatedMoviesComponent
+        :movies="getRelatedMoviesFromState"
+        :startFetchSingleMovie="startFetchSingleMovie"
+        :startFetchComents="startFetchComents"
+        :startFetchRelatedMovies="startFetchRelatedMovies"
+      />
     </aside>
   </div>
 </template>
@@ -64,9 +76,16 @@ export default {
   flex-direction: column;
   align-items: center;
 }
-.side {
+.wraper-asaide {
   display: flex;
-  margin-left: 10%;
-  margin-top: -430px;
+  justify-content: center;
+  align-items: flex-start;
+}
+.side {
+  margin-left: 20px;
+}
+.btn-redirect {
+  margin-left: -400px;
+  margin-bottom: 10px;
 }
 </style>
