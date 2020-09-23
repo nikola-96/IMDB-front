@@ -4,6 +4,8 @@
       class="input-search"
       :startSearchMovie="startSearchMovie"
       :startFetchMovies="startFetchMovies"
+      :genre="getSearchedGenreFromState"
+      :startFetchGenreForSearhTerm="startFetchGenreForSearhTerm"
     />
     <DropdownComponent
       v-if="getGenresFromState"
@@ -12,15 +14,8 @@
       :startFetchGenreMovie="startFetchGenreMovie"
       :startFetchMovies="startFetchMovies"
     />
-    <div
-      class="wraper"
-      v-for="movie in getAllMoviesFromState.data"
-      :key="movie.id"
-    >
-      <SingleMovieComponentForList
-        :movie="movie"
-        :redirectToSingleMovie="redirectToSingleMovie"
-      />
+    <div class="wraper" v-for="movie in getAllMoviesFromState.data" :key="movie.id">
+      <SingleMovieComponentForList :movie="movie" :redirectToSingleMovie="redirectToSingleMovie" />
     </div>
     <PaginationComponent
       :movies="getAllMoviesFromState"
@@ -55,6 +50,7 @@ export default {
       "startFetchAllGenres",
       "startFetchGenreMovie",
       "startFetchNextPageForGenre",
+      "startFetchGenreForSearhTerm",
     ]),
     redirectToSingleMovie(id) {
       this.$router.push(`/movie/${id}`);

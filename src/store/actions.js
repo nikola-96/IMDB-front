@@ -64,4 +64,10 @@ export default {
     const response = await commentService.getComments(movie_id);
     commit("SET_COMMENTS", response.data);
   },
+  async startFetchGenreForSearhTerm({ commit }, { term, genre }) {
+    const response = await movieService.fetchGenreForSearhTerm(term, genre);
+    commit("SET_MOVIES", response.data);
+    commit("SET_CHOSEN_GENRE", genre);
+    commit("SET_TERM", term);
+  },
 };

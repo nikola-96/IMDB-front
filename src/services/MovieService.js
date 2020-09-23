@@ -43,6 +43,16 @@ class MovieService {
     );
     return response;
   }
+  async fetchGenreForSearhTerm(term, genre) {
+    const response = await HTTP.get(
+      MOVIES.GET_ALL +
+        MOVIES.SEARCH_MOVIE_GENRE +
+        genre +
+        MOVIES.SEARCH_TERM_PAGINATION +
+        term
+    );
+    return response;
+  }
 }
 
 const movieService = new MovieService();

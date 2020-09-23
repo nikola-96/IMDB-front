@@ -1,10 +1,6 @@
 <template>
   <div>
-    <SingleCommentComponent
-      v-for="comment in comments"
-      :key="comment.id"
-      :comment="comment"
-    />
+    <SingleCommentComponent v-for="comment in comments" :key="comment.id" :comment="comment" />
   </div>
 </template>
 <script>
@@ -20,9 +16,6 @@ export default {
       type: Array,
       required: true,
     },
-  },
-  created() {
-    console.log(this.comments);
   },
 };
 </script>

@@ -8,6 +8,7 @@ export const MOVIES = {
   GET_MOVIES_BY_GENRE: "/movies/genre?genre=",
   GET_MOVIES_BY_GENRE_FOR_PAGG: "/genre?genre=",
   ONLY_PAGE: "&page=",
+  SEARCH_MOVIE_GENRE: "?genre=",
 };
 export const AUTH = {
   LOGIN: "/auth/login",
