@@ -1,15 +1,12 @@
 <template>
   <div class="comment-wraper">
     <div class="list-group">
-      <a href="#" class="list-group-item list-group-item-action ">
+      <div class="list-group-item list-group-item-action">
         <div class="d-flex w-100 justify-content-between">
           <h5 class="mb-1 heading">{{ comment.user.name }}</h5>
-          <!-- <small>3 days ago</small> -->
         </div>
-        <p class="mb-1">
-          {{ comment.content }}
-        </p>
-      </a>
+        <p class="mb-1">{{ comment.content }}</p>
+      </div>
     </div>
   </div>
 </template>

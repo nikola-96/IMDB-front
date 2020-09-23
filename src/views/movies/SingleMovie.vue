@@ -5,15 +5,14 @@
         type="button"
         class="btn btn-light btn-redirect"
         @click="() => this.$router.push('/movies')"
-      >
-        Go back
-      </button>
+      >Go back</button>
       <SingleMovieComponent :movie="getSingleMovieFromState" />
-      <CommentFormComponent
-        :startPostComment="startPostComment"
+      <CommentFormComponent :startPostComment="startPostComment" :movie="getSingleMovieFromState" />
+      <CommentsList
+        :comments="getCommentsFromState"
+        :startFetchMoreComments="startFetchMoreComments"
         :movie="getSingleMovieFromState"
       />
-      <CommentsList :comments="getCommentsFromState" />
     </div>
     <aside class="side">
       <RelatedMoviesComponent
@@ -47,6 +46,7 @@ export default {
       "startPostComment",
       "startFetchComents",
       "startFetchRelatedMovies",
+      "startFetchMoreComments",
     ]),
   },
   computed: {
