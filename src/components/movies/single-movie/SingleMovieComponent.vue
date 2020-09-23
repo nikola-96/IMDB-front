@@ -6,9 +6,11 @@
       </div>
       <div class="col-md-8">
         <div class="card-body">
-          <h5 class="card-title">{{movie.title}}</h5>
-          <p class="card-text">{{movie.description}}</p>
-          <p class="card-text"></p>
+          <h5 class="card-title">{{ movie.title }}</h5>
+          <p class="card-text">{{ movie.description }}</p>
+          <p class="card-text visited" v-if="movie.visits">
+            Page is visited: {{ movie.visits.visits }} times
+          </p>
         </div>
       </div>
     </div>
@@ -25,3 +27,8 @@ export default {
   },
 };
 </script>
+<style scoped>
+.visited {
+  font-size: 12px;
+}
+</style>
