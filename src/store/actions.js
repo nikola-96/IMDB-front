@@ -7,6 +7,7 @@ export default {
     const response = await movieService.fetchAllMovies();
     commit("SET_MOVIES", response.data);
     commit("SET_TERM", "");
+    commit("SET_CHOSEN_GENRE", undefined);
   },
   async startFetchNextPage({ commit }, url) {
     const response = await movieService.fetchNextPage(url);
