@@ -4,6 +4,7 @@ export const MOVIES = {
   SINGLE_MOVIE: "/movies/",
   SEARCH_TERM: "/movies?term=",
   SEARCH_TERM_PAGINATION: "&term=",
+  RELATED_MOVIES: "/movies/related_genres?genre=",
 };
 export const AUTH = {
   LOGIN: "/auth/login",

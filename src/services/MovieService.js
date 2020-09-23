@@ -27,6 +27,11 @@ class MovieService {
     );
     return response;
   }
+  async fetchRelatedMovies(genre_id) {
+    const response = await HTTP.get(MOVIES.RELATED_MOVIES + genre_id);
+
+    return response;
+  }
 }
 
 const movieService = new MovieService();

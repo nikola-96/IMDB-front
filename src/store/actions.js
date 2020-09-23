@@ -51,4 +51,8 @@ export default {
     const response = await commentService.getComments(movie_id);
     commit("SET_COMMENTS", response.data);
   },
+  async startFetchRelatedMovies({ commit }, genre_id) {
+    const response = await movieService.fetchRelatedMovies(genre_id);
+    commit("SET_RELATED_MOVIES", response.data);
+  },
 };
