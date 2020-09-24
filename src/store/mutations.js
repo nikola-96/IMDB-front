@@ -56,6 +56,6 @@ export default {
     state.movie.dislikes = state.movie.dislikes + 1;
   },
   SET_MOST_RATED_MOVIES(state, movies) {
-    state.relatedMovies = movies;
+    state.mostRatedMovies = movies;
   },
 };
