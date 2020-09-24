@@ -2,8 +2,8 @@
   <div>
     <VueLikeDislikeButtons
       v-if="movie.id"
-      :likes="movie.like.likes"
-      :dislikes="movie.like.dislikes"
+      :likes="movie.likes ? movie.likes : 0"
+      :dislikes="movie.dislikes ? movie.dislikes : 0"
       @like="handleLike"
       @dislike="handleDislike"
     />
@@ -25,14 +25,18 @@ export default {
     },
   },
   methods: {
-    ...mapActions(["startIncrementLike", "startIncrementDislike"]),
+    ...mapActions([
+      "startIncrementLikeOnMovies",
+      "startIncrementDislikeOnMovies",
+    ]),
     handleDislike() {
-      this.startIncrementDislike(this.movie.like.id);
+      this.startIncrementDislikeOnMovies(this.movie.id);
     },
     handleLike() {
-      this.startIncrementLike(this.movie.like.id);
+      this.startIncrementLikeOnMovies(this.movie.id);
     },
   },
+  created() {},
 };
 </script>
 

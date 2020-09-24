@@ -75,15 +75,17 @@ export default {
   },
   async startFetchGenreForSearhTerm({ commit }, { term, genre }) {
     const response = await movieService.fetchGenreForSearhTerm(term, genre);
+    console.log(response.data);
+
     commit("SET_MOVIES", response.data);
     commit("SET_CHOSEN_GENRE", genre);
     commit("SET_TERM", term);
   },
-  async startIncrementLike({ commit }, like_id) {
+  async startIncrementLikeOnMovies({ commit }, id) {
     // await movieService.incrementLike(like_id);
-    commit("INCREMENT_NUM_OF_LIKES_MOVIES", like_id);
+    commit("INCREMENT_NUM_OF_LIKES_MOVIES", id);
   },
-  async startIncrementDislike({ commit }, like_id) {
+  async startIncrementDislikeOnMovies({ commit }, like_id) {
     // await movieService.incrementDislike(like_id);
     commit("INCREMENT_NUM_OF_DISLIKES_MOVIES", like_id);
   },
