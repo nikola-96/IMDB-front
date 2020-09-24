@@ -55,4 +55,7 @@ export default {
   INCREMENT_NUM_OF_DISLIKES_ON_SINGLE_MOVIES(state) {
     state.movie.dislikes = state.movie.dislikes + 1;
   },
+  SET_MOST_RATED_MOVIES(state, movies) {
+    state.relatedMovies = movies;
+  },
 };

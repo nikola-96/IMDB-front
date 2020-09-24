@@ -12,6 +12,7 @@ export const MOVIES = {
   SEARCH_MOVIE_GENRE: "?genre=",
   LIKE_MOVIE: "/likes",
   DISLIKE_MOVIE: "/dislikes",
+  MOST_RATED: "/movies/most_rated",
 };
 export const AUTH = {
   LOGIN: "/auth/login",
