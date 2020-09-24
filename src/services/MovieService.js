@@ -59,10 +59,10 @@ class MovieService {
     return response;
   }
   async incrementLike(id) {
-    await HTTP.post(MOVIES.LIKE_MOVIE, id);
+    await HTTP.post(MOVIES.GET_ALL + `/${id}` + MOVIES.LIKE_MOVIE);
   }
   async incrementDislike(id) {
-    await HTTP.post(MOVIES.DISLIKE_MOVIE, id);
+    await HTTP.post(MOVIES.GET_ALL + `/${id}` + MOVIES.DISLIKE_MOVIE);
   }
 }
 

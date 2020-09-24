@@ -23,6 +23,10 @@ export default {
       type: Object,
       required: true,
     },
+    singleMovie: {
+      type: Boolean,
+      required: false,
+    },
   },
   methods: {
     ...mapActions([
@@ -30,10 +34,16 @@ export default {
       "startIncrementDislikeOnMovies",
     ]),
     handleDislike() {
-      this.startIncrementDislikeOnMovies(this.movie.id);
+      this.startIncrementDislikeOnMovies({
+        id: this.movie.id,
+        singleMovie: this.singleMovie,
+      });
     },
     handleLike() {
-      this.startIncrementLikeOnMovies(this.movie.id);
+      this.startIncrementLikeOnMovies({
+        id: this.movie.id,
+        singleMovie: this.singleMovie,
+      });
     },
   },
   created() {},

@@ -1,5 +1,5 @@
 <template>
-  <div class="card mb-3" style="max-width: 540px;" v-if="movie">
+  <div class="card mb-3" style="max-width: 540px" v-if="movie">
     <div class="row no-gutters">
       <div class="col-md-4">
         <img class="card-img" :src="movie.image_url" />
@@ -12,7 +12,7 @@
             Page is visited: {{ movie.visits.visits }} times
           </p>
         </div>
-        <LikeDislikeComponent :movie="movie" />
+        <LikeDislikeComponent :movie="movie" :singleMovie="true" />
       </div>
     </div>
   </div>

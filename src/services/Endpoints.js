@@ -10,8 +10,8 @@ export const MOVIES = {
   GET_MOVIES_BY_GENRE_FOR_PAGG: "/genre?genre=",
   ONLY_PAGE: "&page=",
   SEARCH_MOVIE_GENRE: "?genre=",
-  LIKE_MOVIE: "/movies/update/likes",
-  DISLIKE_MOVIE: "/movies/update/dislikes",
+  LIKE_MOVIE: "/likes",
+  DISLIKE_MOVIE: "/dislikes",
 };
 export const AUTH = {
   LOGIN: "/auth/login",

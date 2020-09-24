@@ -49,4 +49,10 @@ export default {
       return movie;
     });
   },
+  INCREMENT_NUM_OF_LIKES_ON_SINGLE_MOVIES(state) {
+    state.movie.likes = state.movie.likes + 1;
+  },
+  INCREMENT_NUM_OF_DISLIKES_ON_SINGLE_MOVIES(state) {
+    state.movie.dislikes = state.movie.dislikes + 1;
+  },
 };
