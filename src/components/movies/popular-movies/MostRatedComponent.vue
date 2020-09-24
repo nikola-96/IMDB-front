@@ -1,6 +1,6 @@
 <template>
   <aside>
-    <h4>Related movies</h4>
+    <h4>Top rated movies</h4>
     <ul class="list-group">
       <li
         class="list-group-item list-item"
