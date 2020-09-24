@@ -35,7 +35,11 @@ export default {
     state.user = user;
   },
   SET_WATCH_LIST(state, movies) {
-    console.log(movies);
-    state.whatchList = movies;
+    state.watchList = movies;
+  },
+  DELETE_MOVIE_FROM_LIST(state, id) {
+    state.watchList.data = state.watchList.data.filter(
+      (movie) => movie.id !== id
+    );
   },
 };

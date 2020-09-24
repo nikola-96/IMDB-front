@@ -1,14 +1,10 @@
 <template>
   <div>
-    <div class="card" style="width: 20rem;">
-      <img class="card-img-top" />
+    <div class="card" style="width: 30rem;">
+      <img :src="movie.image_url" class="card-img-top" />
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <h5 class="card-title">{{ movie.title }}</h5>
+        <a class="btn btn-primary" @click="hadnleDelete">Remove</a>
       </div>
     </div>
   </div>
@@ -16,5 +12,20 @@
 <script>
 export default {
   name: "WatchListSingleComponent",
+  props: {
+    movie: {
+      type: Object,
+      requred: true,
+    },
+    startDeleteMovieFromWatchList: {
+      type: Function,
+      required: true,
+    },
+  },
+  methods: {
+    async hadnleDelete() {
+      await this.startDeleteMovieFromWatchList(this.movie.id);
+    },
+  },
 };
 </script>

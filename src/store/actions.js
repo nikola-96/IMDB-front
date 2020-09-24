@@ -91,4 +91,8 @@ export default {
     const response = await movieService.fetchMoviesForWatchList();
     commit("SET_WATCH_LIST", response.data);
   },
+  async startDeleteMovieFromWatchList({ commit }, id) {
+    await movieService.deleteMovieFromWatchList(id);
+    commit("DELETE_MOVIE_FROM_LIST", id);
+  },
 };
