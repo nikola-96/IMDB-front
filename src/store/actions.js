@@ -79,4 +79,28 @@ export default {
     commit("SET_CHOSEN_GENRE", genre);
     commit("SET_TERM", term);
   },
+  async startIncrementLikeOnMovies({ commit }, { id, singleMovie }) {
+    try {
+      await movieService.incrementLike(id);
+      if (!singleMovie) {
+        commit("INCREMENT_NUM_OF_LIKES_MOVIES", id);
+      } else {
+        commit("INCREMENT_NUM_OF_LIKES_ON_SINGLE_MOVIES");
+      }
+    } catch (error) {
+      alert("You alredy vote for this movie");
+    }
+  },
+  async startIncrementDislikeOnMovies({ commit }, { id, singleMovie }) {
+    try {
+      await movieService.incrementDislike(id);
+      if (!singleMovie) {
+        commit("INCREMENT_NUM_OF_DISLIKES_MOVIES", id);
+      } else {
+        commit("INCREMENT_NUM_OF_DISLIKES_ON_SINGLE_MOVIES");
+      }
+    } catch (error) {
+      alert("You alredy vote for this movie");
+    }
+  },
 };

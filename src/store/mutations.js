@@ -31,4 +31,28 @@ export default {
   SET_RELATED_MOVIES(state, movies) {
     state.relatedMovies = movies;
   },
+  INCREMENT_NUM_OF_LIKES_MOVIES(state, id) {
+    state.movies.data = state.movies.data.map((movie) => {
+      if (movie.id === id) {
+        movie.likes = movie.likes + 1;
+        return movie;
+      }
+      return movie;
+    });
+  },
+  INCREMENT_NUM_OF_DISLIKES_MOVIES(state, id) {
+    state.movies.data = state.movies.data.map((movie) => {
+      if (movie.id === id) {
+        movie.dislikes = movie.dislikes + 1;
+        return movie;
+      }
+      return movie;
+    });
+  },
+  INCREMENT_NUM_OF_LIKES_ON_SINGLE_MOVIES(state) {
+    state.movie.likes = state.movie.likes + 1;
+  },
+  INCREMENT_NUM_OF_DISLIKES_ON_SINGLE_MOVIES(state) {
+    state.movie.dislikes = state.movie.dislikes + 1;
+  },
 };
