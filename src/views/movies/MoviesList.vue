@@ -88,11 +88,15 @@ export default {
   display: flex;
   justify-content: center;
 }
-/* .input-search {
+.input-search {
   margin-bottom: -30px;
-} */
+}
 .dropdown {
   margin-left: 420px;
   margin-bottom: 10px;
+}
+.watch-list {
+  margin-right: 470px;
+  margin-bottom: -50px;
 }
 </style>
