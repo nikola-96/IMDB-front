@@ -31,4 +31,8 @@ export default {
   SET_RELATED_MOVIES(state, movies) {
     state.relatedMovies = movies;
   },
+  SET_CURRENT_USER(state, user) {
+    state.user = user;
+    console.log(user);
+  },
 };

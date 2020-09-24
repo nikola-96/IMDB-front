@@ -6,12 +6,19 @@
       </div>
       <div class="col-md-8">
         <div class="card-body">
-          <input type="checkbox" class="watch-checkbox" />
-          <h5 class="card-title" @click="redirectToSingleMovie(movie.id)">{{movie.title}}</h5>
-          <p class="card-text">{{movie.description.slice(0, 150)}}...</p>
+          <h5 class="card-title" @click="redirectToSingleMovie(movie.id)">
+            {{ movie.title }}
+          </h5>
+          <p class="card-text">{{ movie.description.slice(0, 150) }}...</p>
           <p class="card-text"></p>
         </div>
       </div>
+      <p class="watch-list">Add to watch list</p>
+      <input
+        type="checkbox"
+        class="watch-checkbox"
+        @click="handleSelectMovie()"
+      />
     </div>
   </div>
 </template>
@@ -27,6 +34,20 @@ export default {
       type: Function,
       required: true,
     },
+    user: {
+      type: Object,
+      required: true,
+    },
+    startAddMovieToWatchList: {
+      type: Function,
+      required: true,
+    },
+  },
+  methods: {
+    handleSelectMovie() {
+      console.log(this.movie.id);
+      this.startAddMovieToWatchList(this.movie.id);
+    },
   },
 };
 </script>
@@ -35,6 +56,11 @@ export default {
   cursor: pointer;
 }
 .watch-checkbox {
-  margin-left: 300px;
+  margin-left: 500px;
+  margin-top: -35px;
+}
+.watch-list {
+  margin-left: 350px;
+  font-size: 14px;
 }
 </style>

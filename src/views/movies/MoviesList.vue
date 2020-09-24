@@ -14,8 +14,17 @@
       :startFetchGenreMovie="startFetchGenreMovie"
       :startFetchMovies="startFetchMovies"
     />
-    <div class="wraper" v-for="movie in getAllMoviesFromState.data" :key="movie.id">
-      <SingleMovieComponentForList :movie="movie" :redirectToSingleMovie="redirectToSingleMovie" />
+    <div
+      class="wraper"
+      v-for="movie in getAllMoviesFromState.data"
+      :key="movie.id"
+    >
+      <SingleMovieComponentForList
+        :movie="movie"
+        :redirectToSingleMovie="redirectToSingleMovie"
+        :user="getCurrentUserFromState"
+        :startAddMovieToWatchList="startAddMovieToWatchList"
+      />
     </div>
     <PaginationComponent
       :movies="getAllMoviesFromState"
@@ -51,6 +60,8 @@ export default {
       "startFetchGenreMovie",
       "startFetchNextPageForGenre",
       "startFetchGenreForSearhTerm",
+      "startFetchCurrentuser",
+      "startAddMovieToWatchList",
     ]),
     redirectToSingleMovie(id) {
       this.$router.push(`/movie/${id}`);
@@ -62,11 +73,13 @@ export default {
       "getTermFromState",
       "getGenresFromState",
       "getSearchedGenreFromState",
+      "getCurrentUserFromState",
     ]),
   },
   async created() {
     await this.startFetchMovies();
     await this.startFetchAllGenres();
+    await this.startFetchCurrentuser();
   },
 };
 </script>

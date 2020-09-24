@@ -9,7 +9,6 @@ class AuthService {
     await HTTP.post(AUTH.REGISTER, user);
   }
 
-
   login({ email, password }) {
     return HTTP.post(AUTH.LOGIN, { email, password }).then((response) => {
       window.localStorage.setItem("loginToken", response.data.access_token);
@@ -33,6 +32,11 @@ class AuthService {
 
   isAuthenticated() {
     return !!window.localStorage.getItem("loginToken");
+  }
+  async getCurrentUser() {
+    const response = await HTTP.post("/auth/me");
+
+    return response;
   }
 }
 

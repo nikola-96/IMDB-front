@@ -79,4 +79,12 @@ export default {
     commit("SET_CHOSEN_GENRE", genre);
     commit("SET_TERM", term);
   },
+  async startFetchCurrentuser({ commit }) {
+    const response = await authService.getCurrentUser();
+    commit("SET_CURRENT_USER", response.data);
+  },
+  async startAddMovieToWatchList({ commit }, id) {
+    await movieService.addMovieToWatchList(id);
+    commit("");
+  },
 };
