@@ -11,6 +11,7 @@ export const MOVIES = {
   ONLY_PAGE: "&page=",
   SEARCH_MOVIE_GENRE: "?genre=",
   ADD_TO_WHATCH_LIST: "/movies/movies_list",
+  GET_WATCH_LIST: "movies/movies_list",
 };
 export const AUTH = {
   LOGIN: "/auth/login",

@@ -33,6 +33,9 @@ export default {
   },
   SET_CURRENT_USER(state, user) {
     state.user = user;
-    console.log(user);
+  },
+  SET_WATCH_LIST(state, movies) {
+    console.log(movies);
+    state.whatchList = movies;
   },
 };

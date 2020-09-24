@@ -62,6 +62,11 @@ class MovieService {
     console.log(id);
     await HTTP.post(MOVIES.ADD_TO_WHATCH_LIST, { id: id });
   }
+  async fetchMoviesForWatchList() {
+    const response = await HTTP.get(MOVIES.GET_WATCH_LIST);
+
+    return response;
+  }
 }
 
 const movieService = new MovieService();

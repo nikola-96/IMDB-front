@@ -87,4 +87,8 @@ export default {
     await movieService.addMovieToWatchList(id);
     commit("");
   },
+  async startFetchMoviesForWatchList({ commit }) {
+    const response = await movieService.fetchMoviesForWatchList();
+    commit("SET_WATCH_LIST", response.data);
+  },
 };

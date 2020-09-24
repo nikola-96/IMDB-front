@@ -17,6 +17,7 @@ export default new Vuex.Store({
     comments: [],
     relatedMovies: [],
     user: {},
+    watchList: [],
   },
   getters,
   mutations,
