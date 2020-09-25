@@ -47,14 +47,16 @@
             >Genre:</label
           >
           <div class="col-sm-12">
-            <select class="form-control" v-model="movie.genre" required>
+            <select class="form-control" v-model="movie.genre_id" required>
+              <option></option>
               <option
                 class="selelct-option"
                 v-for="genre in genres"
                 :key="genre.id"
                 :value="genre.id"
-                >{{ genre.name }}</option
               >
+                {{ genre.name }}
+              </option>
             </select>
           </div>
         </div>
@@ -76,9 +78,16 @@ export default {
       type: Array,
       required: true,
     },
+    postMovie: {
+      type: Function,
+      required: true,
+    },
   },
   methods: {
-    async handleSubmit() {},
+    async handleSubmit() {
+      await this.postMovie(this.movie);
+      this.movie = {};
+    },
   },
 };
 </script>

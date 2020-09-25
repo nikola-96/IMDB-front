@@ -1,6 +1,6 @@
 <template>
   <div>
-    <MovieFormComponent :genres="getGenresFromState" />
+    <MovieFormComponent :genres="getGenresFromState" :postMovie="postMovie" />
   </div>
 </template>
 <script>
@@ -12,7 +12,7 @@ export default {
     MovieFormComponent,
   },
   methods: {
-    ...mapActions(["startFetchAllGenres"]),
+    ...mapActions(["startFetchAllGenres", "postMovie"]),
   },
   computed: {
     ...mapGetters(["getGenresFromState"]),
