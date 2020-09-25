@@ -14,12 +14,15 @@
         </div>
         <LikeDislikeComponent :movie="movie" />
       </div>
-      <p class="watch-list">Add to watch list</p>
-      <input
-        type="checkbox"
-        class="watch-checkbox"
-        @click="handleSelectMovie()"
-      />
+      <div class="watched-wraper" v-if="!movie.lists[0]">
+        <p class="watch-list">Add to watch list</p>
+        <input
+          type="checkbox"
+          class="watch-checkbox"
+          @click="handleSelectMovie()"
+        />
+      </div>
+      <p class="watch-list" v-else>You've watched this!</p>
     </div>
   </div>
 </template>
@@ -50,7 +53,6 @@ export default {
   },
   methods: {
     handleSelectMovie() {
-      console.log(this.movie.id);
       this.startAddMovieToWatchList(this.movie.id);
     },
   },
@@ -62,10 +64,15 @@ export default {
 }
 .watch-checkbox {
   margin-left: 500px;
-  margin-top: -35px;
 }
 .watch-list {
   margin-left: 350px;
   font-size: 14px;
 }
+/* .watched-wraper { */
+/* display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center; */
+/* } */
 </style>

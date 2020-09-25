@@ -10,6 +10,13 @@
       </div>
       <div class="wraper">
         <div class="movie-list-header">
+          <button
+            type="button"
+            class="btn btn-secondary watch-list"
+            @click="() => this.$router.push('/movies/watch_list')"
+          >
+            Watch list
+          </button>
           <SearchComponent
             class="input-search"
             :startSearchMovie="startSearchMovie"
@@ -131,7 +138,7 @@ export default {
   margin-bottom: 10px;
 }
 .watch-list {
-  margin-right: 470px;
-  margin-bottom: -50px;
+  margin-right: 70px;
+  margin-left: -190px;
 }
 </style>

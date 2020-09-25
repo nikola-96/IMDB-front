@@ -84,8 +84,8 @@ export default {
     commit("SET_CURRENT_USER", response.data);
   },
   async startAddMovieToWatchList({ commit }, id) {
-    await movieService.addMovieToWatchList(id);
-    commit("");
+    const resposne = await movieService.addMovieToWatchList(id);
+    commit("ADD_MOVIE_TO_WATCH_LIST", resposne.data);
   },
   async startDeleteMovieFromWatchList({ commit }, id) {
     await movieService.deleteMovieFromWatchList(id);

@@ -59,7 +59,9 @@ class MovieService {
     return response;
   }
   async addMovieToWatchList(id) {
-    await HTTP.post(MOVIES.ADD_TO_WHATCH_LIST, { id: id });
+    const response = await HTTP.post(MOVIES.ADD_TO_WHATCH_LIST, { id: id });
+    console.log(response.data);
+    return response;
   }
   async fetchMoviesForWatchList() {
     const response = await HTTP.get(MOVIES.GET_WATCH_LIST);
@@ -67,7 +69,6 @@ class MovieService {
     return response;
   }
   async deleteMovieFromWatchList(id) {
-    console.log(MOVIES.DELETE_FROM_WATCH_LIST + id);
     await HTTP.delete(MOVIES.DELETE_FROM_WATCH_LIST + id);
   }
   async incrementLike(id) {

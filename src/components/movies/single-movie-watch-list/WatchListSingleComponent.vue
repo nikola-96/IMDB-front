@@ -27,8 +27,5 @@ export default {
       await this.startDeleteMovieFromWatchList(this.movie.id);
     },
   },
-  created() {
-    console.log(this.movie);
-  },
 };
 </script>

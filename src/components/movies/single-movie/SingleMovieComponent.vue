@@ -11,6 +11,7 @@
           <p class="card-text visited" v-if="movie.visits">
             Page is visited: {{ movie.visits.visits }} times
           </p>
+          <p v-if="movie.lists[0]">You've watched this!</p>
         </div>
         <LikeDislikeComponent :movie="movie" :singleMovie="true" />
       </div>
@@ -29,6 +30,9 @@ export default {
       type: Object,
       requred: true,
     },
+  },
+  created() {
+    console.log(this.movie);
   },
 };
 </script>

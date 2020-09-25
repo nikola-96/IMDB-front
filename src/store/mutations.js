@@ -69,4 +69,14 @@ export default {
   SET_MOST_RATED_MOVIES(state, movies) {
     state.mostRatedMovies = movies;
   },
+  ADD_MOVIE_TO_WATCH_LIST(state, watchList) {
+    state.movies.data = state.movies.data.map((movie) => {
+      if (movie.id === watchList.movie_id) {
+        movie.lists = watchList;
+        return movie;
+      } else {
+        return movie;
+      }
+    });
+  },
 };
