@@ -31,9 +31,6 @@ export default {
       requred: true,
     },
   },
-  created() {
-    console.log(this.movie);
-  },
 };
 </script>
 <style scoped>
