@@ -31,6 +31,17 @@ export default {
   SET_RELATED_MOVIES(state, movies) {
     state.relatedMovies = movies;
   },
+  SET_CURRENT_USER(state, user) {
+    state.user = user;
+  },
+  SET_WATCH_LIST(state, movies) {
+    state.watchList = movies;
+  },
+  DELETE_MOVIE_FROM_LIST(state, id) {
+    state.watchList.data = state.watchList.data.filter(
+      (movie) => movie.id !== id
+    );
+  },
   INCREMENT_NUM_OF_LIKES_MOVIES(state, id) {
     state.movies.data = state.movies.data.map((movie) => {
       if (movie.id === id) {
@@ -57,5 +68,15 @@ export default {
   },
   SET_MOST_RATED_MOVIES(state, movies) {
     state.mostRatedMovies = movies;
+  },
+  ADD_MOVIE_TO_WATCH_LIST(state, watchList) {
+    state.movies.data = state.movies.data.map((movie) => {
+      if (movie.id === watchList.movie_id) {
+        movie.lists = watchList;
+        return movie;
+      } else {
+        return movie;
+      }
+    });
   },
 };

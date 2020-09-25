@@ -16,6 +16,8 @@ export default new Vuex.Store({
     genre: undefined,
     comments: [],
     relatedMovies: [],
+    user: {},
+    watchList: {},
     mostRatedMovies: [],
   },
   getters,

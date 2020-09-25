@@ -4,6 +4,7 @@ import Register from "../views/auth/register/Register";
 import Login from "../views/auth/login/Login";
 import MoviesList from "../views/movies/MoviesList";
 import SingleMovie from "../views/movies/SingleMovie";
+import WatchList from "../views/movies/WatchList";
 
 Vue.use(VueRouter);
 
@@ -27,6 +28,11 @@ const routes = [
     path: "/movie/:id",
     name: "SingleMovie",
     component: SingleMovie,
+  },
+  {
+    path: "/movies/watch_list",
+    name: "WatchLIst",
+    component: WatchList,
   },
 ];
 

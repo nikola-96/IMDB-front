@@ -79,6 +79,18 @@ export default {
     commit("SET_CHOSEN_GENRE", genre);
     commit("SET_TERM", term);
   },
+  async startFetchCurrentuser({ commit }) {
+    const response = await authService.getCurrentUser();
+    commit("SET_CURRENT_USER", response.data);
+  },
+  async startAddMovieToWatchList({ commit }, id) {
+    const resposne = await movieService.addMovieToWatchList(id);
+    commit("ADD_MOVIE_TO_WATCH_LIST", resposne.data);
+  },
+  async startDeleteMovieFromWatchList({ commit }, id) {
+    await movieService.deleteMovieFromWatchList(id);
+    commit("DELETE_MOVIE_FROM_LIST", id);
+  },
   async startIncrementLikeOnMovies({ commit }, { id, singleMovie }) {
     try {
       await movieService.incrementLike(id);
@@ -102,6 +114,10 @@ export default {
     } catch (error) {
       alert("You alredy vote for this movie");
     }
+  },
+  async fetchWatchList({ commit }) {
+    const response = await movieService.fetchMoviesForWatchList();
+    commit("SET_WATCH_LIST", response.data);
   },
   async startFetchMostRatedMovies({ commit }) {
     const response = await movieService.fetchMostRatedMovies();

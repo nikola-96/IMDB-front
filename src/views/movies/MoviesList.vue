@@ -10,6 +10,13 @@
       </div>
       <div class="wraper">
         <div class="movie-list-header">
+          <button
+            type="button"
+            class="btn btn-secondary watch-list"
+            @click="() => this.$router.push('/movies/watch_list')"
+          >
+            Watch list
+          </button>
           <SearchComponent
             class="input-search"
             :startSearchMovie="startSearchMovie"
@@ -32,6 +39,8 @@
             :key="movie.id"
             :movie="movie"
             :redirectToSingleMovie="redirectToSingleMovie"
+            :startAddMovieToWatchList="startAddMovieToWatchList"
+            :user="getCurrentUserFromState"
           />
         </div>
         <PaginationComponent
@@ -72,6 +81,8 @@ export default {
       "startFetchGenreMovie",
       "startFetchNextPageForGenre",
       "startFetchGenreForSearhTerm",
+      "startFetchCurrentuser",
+      "startAddMovieToWatchList",
       "startFetchMostRatedMovies",
     ]),
     redirectToSingleMovie(id) {
@@ -84,12 +95,14 @@ export default {
       "getTermFromState",
       "getGenresFromState",
       "getSearchedGenreFromState",
+      "getCurrentUserFromState",
       "getMostRatedMoviesFromState",
     ]),
   },
   async created() {
     await this.startFetchMovies();
     await this.startFetchAllGenres();
+    await this.startFetchCurrentuser();
     await this.startFetchMostRatedMovies();
   },
 };
@@ -123,5 +136,9 @@ export default {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
+}
+.watch-list {
+  margin-right: 70px;
+  margin-left: -190px;
 }
 </style>

@@ -7,5 +7,7 @@ export default {
   getSearchedGenreFromState: (state) => state.genre,
   getCommentsFromState: (state) => state.comments,
   getRelatedMoviesFromState: (state) => state.relatedMovies,
+  getCurrentUserFromState: (state) => state.user,
+  getWatchListFromState: (state) => state.watchList,
   getMostRatedMoviesFromState: (state) => state.mostRatedMovies,
 };

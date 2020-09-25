@@ -58,6 +58,18 @@ class MovieService {
     );
     return response;
   }
+  async addMovieToWatchList(id) {
+    const response = await HTTP.post(MOVIES.ADD_TO_WHATCH_LIST, { id: id });
+    return response;
+  }
+  async fetchMoviesForWatchList() {
+    const response = await HTTP.get(MOVIES.GET_WATCH_LIST);
+
+    return response;
+  }
+  async deleteMovieFromWatchList(id) {
+    await HTTP.delete(MOVIES.DELETE_FROM_WATCH_LIST + id);
+  }
   async incrementLike(id) {
     await HTTP.post(MOVIES.GET_ALL + `/${id}` + MOVIES.LIKE_MOVIE);
   }
@@ -65,7 +77,7 @@ class MovieService {
     await HTTP.post(MOVIES.GET_ALL + `/${id}` + MOVIES.DISLIKE_MOVIE);
   }
   async fetchMostRatedMovies() {
-    const response = await HTTP.get(MOVIES.MOST_RATED);
+    const response = await HTTP.get("/movies/most_rated");
 
     return response;
   }
