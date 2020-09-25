@@ -14,17 +14,33 @@
       :startFetchGenreMovie="startFetchGenreMovie"
       :startFetchMovies="startFetchMovies"
     />
-    <div class="wraper" v-for="movie in getAllMoviesFromState.data" :key="movie.id">
-      <SingleMovieComponentForList :movie="movie" :redirectToSingleMovie="redirectToSingleMovie" />
+    <div class="wraper-aside">
+      <div class="most-rated">
+        <MostRatedComponent
+          v-if="startFetchMostRatedMovies"
+          :movies="getMostRatedMoviesFromState"
+          :redirectToSingleMovie="redirectToSingleMovie"
+        />
+      </div>
+      <div class="wraper">
+        <div>
+          <SingleMovieComponentForList
+            v-for="movie in getAllMoviesFromState.data"
+            :key="movie.id"
+            :movie="movie"
+            :redirectToSingleMovie="redirectToSingleMovie"
+          />
+        </div>
+        <PaginationComponent
+          :movies="getAllMoviesFromState"
+          :startFetchNextPage="startFetchNextPage"
+          :getTermFromState="getTermFromState"
+          :startFetchNextPageForSearchedTerm="startFetchNextPageForSearchedTerm"
+          :getSearchedGenreFromState="getSearchedGenreFromState"
+          :startFetchNextPageForGenre="startFetchNextPageForGenre"
+        />
+      </div>
     </div>
-    <PaginationComponent
-      :movies="getAllMoviesFromState"
-      :startFetchNextPage="startFetchNextPage"
-      :getTermFromState="getTermFromState"
-      :startFetchNextPageForSearchedTerm="startFetchNextPageForSearchedTerm"
-      :getSearchedGenreFromState="getSearchedGenreFromState"
-      :startFetchNextPageForGenre="startFetchNextPageForGenre"
-    />
   </div>
 </template>
 <script>
@@ -32,6 +48,7 @@ import PaginationComponent from "../../components/movies/pagination/PaginationCo
 import SingleMovieComponentForList from "../../components/movies/movies-list/SingleMovieComponentForList";
 import SearchComponent from "../../components/movies/search-component/SearchComponent";
 import DropdownComponent from "../../components/movies/dropown/DropdownComponent";
+import MostRatedComponent from "../../components/movies/popular-movies/MostRatedComponent";
 import { mapActions, mapGetters } from "vuex";
 export default {
   name: "MoviesList",
@@ -40,6 +57,7 @@ export default {
     SingleMovieComponentForList,
     SearchComponent,
     DropdownComponent,
+    MostRatedComponent,
   },
   methods: {
     ...mapActions([
@@ -51,6 +69,7 @@ export default {
       "startFetchGenreMovie",
       "startFetchNextPageForGenre",
       "startFetchGenreForSearhTerm",
+      "startFetchMostRatedMovies",
     ]),
     redirectToSingleMovie(id) {
       this.$router.push(`/movie/${id}`);
@@ -62,11 +81,13 @@ export default {
       "getTermFromState",
       "getGenresFromState",
       "getSearchedGenreFromState",
+      "getMostRatedMoviesFromState",
     ]),
   },
   async created() {
     await this.startFetchMovies();
     await this.startFetchAllGenres();
+    await this.startFetchMostRatedMovies();
   },
 };
 </script>
@@ -74,6 +95,8 @@ export default {
 .wraper {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 /* .input-search {
   margin-bottom: -30px;
@@ -81,5 +104,15 @@ export default {
 .dropdown {
   margin-left: 420px;
   margin-bottom: 10px;
+}
+.wraper-aside {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: row;
+}
+.most-rated {
+  margin-right: 20px;
+  margin-left: -50px;
 }
 </style>

@@ -64,6 +64,11 @@ class MovieService {
   async incrementDislike(id) {
     await HTTP.post(MOVIES.GET_ALL + `/${id}` + MOVIES.DISLIKE_MOVIE);
   }
+  async fetchMostRatedMovies() {
+    const response = await HTTP.get(MOVIES.MOST_RATED);
+
+    return response;
+  }
 }
 
 const movieService = new MovieService();

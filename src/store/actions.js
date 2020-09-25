@@ -103,4 +103,8 @@ export default {
       alert("You alredy vote for this movie");
     }
   },
+  async startFetchMostRatedMovies({ commit }) {
+    const response = await movieService.fetchMostRatedMovies();
+    commit("SET_MOST_RATED_MOVIES", response.data);
+  },
 };
