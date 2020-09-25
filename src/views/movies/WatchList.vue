@@ -1,8 +1,10 @@
 <template>
   <div class="wraper-watch-list">
     <h3>Your watch list</h3>
-    <div v-for="movie in getWatchListFromState.data" :key="movie.id">
+    <div>
       <WatchListSingleComponent
+        v-for="movie in getWatchListFromState.data"
+        :key="movie.id"
         class="single-comp"
         :movie="movie"
         :startDeleteMovieFromWatchList="startDeleteMovieFromWatchList"
@@ -20,16 +22,13 @@ export default {
     WatchListSingleComponent,
   },
   methods: {
-    ...mapActions([
-      "startFetchMoviesForWatchList",
-      "startDeleteMovieFromWatchList",
-    ]),
+    ...mapActions(["startDeleteMovieFromWatchList", "fetchWatchList"]),
   },
   computed: {
     ...mapGetters(["getWatchListFromState"]),
   },
   async created() {
-    await this.startFetchMoviesForWatchList();
+    await this.fetchWatchList();
   },
 };
 </script>

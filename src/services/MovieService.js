@@ -77,7 +77,7 @@ class MovieService {
     await HTTP.post(MOVIES.GET_ALL + `/${id}` + MOVIES.DISLIKE_MOVIE);
   }
   async fetchMostRatedMovies() {
-    const response = await HTTP.get(MOVIES.MOST_RATED);
+    const response = await HTTP.get("/movies/most_rated");
 
     return response;
   }
