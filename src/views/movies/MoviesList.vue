@@ -1,19 +1,5 @@
 <template>
   <div v-if="getAllMoviesFromState">
-    <SearchComponent
-      class="input-search"
-      :startSearchMovie="startSearchMovie"
-      :startFetchMovies="startFetchMovies"
-      :genre="getSearchedGenreFromState"
-      :startFetchGenreForSearhTerm="startFetchGenreForSearhTerm"
-    />
-    <DropdownComponent
-      v-if="getGenresFromState"
-      class="dropdown"
-      :genres="getGenresFromState"
-      :startFetchGenreMovie="startFetchGenreMovie"
-      :startFetchMovies="startFetchMovies"
-    />
     <div class="wraper-aside">
       <div class="most-rated">
         <MostRatedComponent
@@ -23,6 +9,23 @@
         />
       </div>
       <div class="wraper">
+        <div class="movie-list-header">
+          <SearchComponent
+            class="input-search"
+            :startSearchMovie="startSearchMovie"
+            :startFetchMovies="startFetchMovies"
+            :genre="getSearchedGenreFromState"
+            :startFetchGenreForSearhTerm="startFetchGenreForSearhTerm"
+          />
+          <DropdownComponent
+            v-if="getGenresFromState"
+            class="dropdown"
+            :genres="getGenresFromState"
+            :startFetchGenreMovie="startFetchGenreMovie"
+            :startFetchMovies="startFetchMovies"
+          />
+        </div>
+
         <div>
           <SingleMovieComponentForList
             v-for="movie in getAllMoviesFromState.data"
@@ -98,12 +101,11 @@ export default {
   flex-direction: column;
   align-items: center;
 }
-/* .input-search {
-  margin-bottom: -30px;
-} */
+.input-search {
+  margin-right: 80px;
+}
 .dropdown {
-  margin-left: 420px;
-  margin-bottom: 10px;
+  margin-right: -190px;
 }
 .wraper-aside {
   display: flex;
@@ -114,5 +116,12 @@ export default {
 .most-rated {
   margin-right: 20px;
   margin-left: -50px;
+}
+.movie-list-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
 }
 </style>
