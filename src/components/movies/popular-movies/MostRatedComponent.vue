@@ -28,3 +28,11 @@ export default {
   },
 };
 </script>
+<style scoped>
+.list-item {
+  text-transform: capitalize;
+}
+.list-item:hover {
+  cursor: pointer;
+}
+</style>
