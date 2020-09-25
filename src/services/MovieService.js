@@ -70,6 +70,17 @@ class MovieService {
     console.log(MOVIES.DELETE_FROM_WATCH_LIST + id);
     await HTTP.delete(MOVIES.DELETE_FROM_WATCH_LIST + id);
   }
+  async incrementLike(id) {
+    await HTTP.post(MOVIES.GET_ALL + `/${id}` + MOVIES.LIKE_MOVIE);
+  }
+  async incrementDislike(id) {
+    await HTTP.post(MOVIES.GET_ALL + `/${id}` + MOVIES.DISLIKE_MOVIE);
+  }
+  async fetchMostRatedMovies() {
+    const response = await HTTP.get(MOVIES.MOST_RATED);
+
+    return response;
+  }
 }
 
 const movieService = new MovieService();

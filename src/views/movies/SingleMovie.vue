@@ -5,9 +5,14 @@
         type="button"
         class="btn btn-light btn-redirect"
         @click="() => this.$router.push('/movies')"
-      >Go back</button>
+      >
+        Go back
+      </button>
       <SingleMovieComponent :movie="getSingleMovieFromState" />
-      <CommentFormComponent :startPostComment="startPostComment" :movie="getSingleMovieFromState" />
+      <CommentFormComponent
+        :startPostComment="startPostComment"
+        :movie="getSingleMovieFromState"
+      />
       <CommentsList
         :comments="getCommentsFromState"
         :startFetchMoreComments="startFetchMoreComments"

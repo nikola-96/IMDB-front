@@ -13,6 +13,9 @@ export const MOVIES = {
   ADD_TO_WHATCH_LIST: "/movies/movies_list",
   GET_WATCH_LIST: "movies/movies_list",
   DELETE_FROM_WATCH_LIST: "/movies/movies_list/",
+  LIKE_MOVIE: "/likes",
+  DISLIKE_MOVIE: "/dislikes",
+  MOST_RATED: "/movies/most_rated",
 };
 export const AUTH = {
   LOGIN: "/auth/login",

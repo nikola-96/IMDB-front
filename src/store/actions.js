@@ -95,4 +95,32 @@ export default {
     await movieService.deleteMovieFromWatchList(id);
     commit("DELETE_MOVIE_FROM_LIST", id);
   },
+  async startIncrementLikeOnMovies({ commit }, { id, singleMovie }) {
+    try {
+      await movieService.incrementLike(id);
+      if (!singleMovie) {
+        commit("INCREMENT_NUM_OF_LIKES_MOVIES", id);
+      } else {
+        commit("INCREMENT_NUM_OF_LIKES_ON_SINGLE_MOVIES");
+      }
+    } catch (error) {
+      alert("You alredy vote for this movie");
+    }
+  },
+  async startIncrementDislikeOnMovies({ commit }, { id, singleMovie }) {
+    try {
+      await movieService.incrementDislike(id);
+      if (!singleMovie) {
+        commit("INCREMENT_NUM_OF_DISLIKES_MOVIES", id);
+      } else {
+        commit("INCREMENT_NUM_OF_DISLIKES_ON_SINGLE_MOVIES");
+      }
+    } catch (error) {
+      alert("You alredy vote for this movie");
+    }
+  },
+  async startFetchMostRatedMovies({ commit }) {
+    const response = await movieService.fetchMostRatedMovies();
+    commit("SET_MOST_RATED_MOVIES", response.data);
+  },
 };

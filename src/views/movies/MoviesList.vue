@@ -1,39 +1,51 @@
 <template>
   <div v-if="getAllMoviesFromState">
-    <SearchComponent
-      class="input-search"
-      :startSearchMovie="startSearchMovie"
-      :startFetchMovies="startFetchMovies"
-      :genre="getSearchedGenreFromState"
-      :startFetchGenreForSearhTerm="startFetchGenreForSearhTerm"
-    />
-    <DropdownComponent
-      v-if="getGenresFromState"
-      class="dropdown"
-      :genres="getGenresFromState"
-      :startFetchGenreMovie="startFetchGenreMovie"
-      :startFetchMovies="startFetchMovies"
-    />
-    <div
-      class="wraper"
-      v-for="movie in getAllMoviesFromState.data"
-      :key="movie.id"
-    >
-      <SingleMovieComponentForList
-        :movie="movie"
-        :redirectToSingleMovie="redirectToSingleMovie"
-        :user="getCurrentUserFromState"
-        :startAddMovieToWatchList="startAddMovieToWatchList"
-      />
+    <div class="wraper-aside">
+      <div class="most-rated">
+        <MostRatedComponent
+          v-if="startFetchMostRatedMovies"
+          :movies="getMostRatedMoviesFromState"
+          :redirectToSingleMovie="redirectToSingleMovie"
+        />
+      </div>
+      <div class="wraper">
+        <div class="movie-list-header">
+          <SearchComponent
+            class="input-search"
+            :startSearchMovie="startSearchMovie"
+            :startFetchMovies="startFetchMovies"
+            :genre="getSearchedGenreFromState"
+            :startFetchGenreForSearhTerm="startFetchGenreForSearhTerm"
+          />
+          <DropdownComponent
+            v-if="getGenresFromState"
+            class="dropdown"
+            :genres="getGenresFromState"
+            :startFetchGenreMovie="startFetchGenreMovie"
+            :startFetchMovies="startFetchMovies"
+          />
+        </div>
+
+        <div>
+          <SingleMovieComponentForList
+            v-for="movie in getAllMoviesFromState.data"
+            :key="movie.id"
+            :movie="movie"
+            :redirectToSingleMovie="redirectToSingleMovie"
+            :startAddMovieToWatchList="startAddMovieToWatchList"
+            :user="getCurrentUserFromState"
+          />
+        </div>
+        <PaginationComponent
+          :movies="getAllMoviesFromState"
+          :startFetchNextPage="startFetchNextPage"
+          :getTermFromState="getTermFromState"
+          :startFetchNextPageForSearchedTerm="startFetchNextPageForSearchedTerm"
+          :getSearchedGenreFromState="getSearchedGenreFromState"
+          :startFetchNextPageForGenre="startFetchNextPageForGenre"
+        />
+      </div>
     </div>
-    <PaginationComponent
-      :movies="getAllMoviesFromState"
-      :startFetchNextPage="startFetchNextPage"
-      :getTermFromState="getTermFromState"
-      :startFetchNextPageForSearchedTerm="startFetchNextPageForSearchedTerm"
-      :getSearchedGenreFromState="getSearchedGenreFromState"
-      :startFetchNextPageForGenre="startFetchNextPageForGenre"
-    />
   </div>
 </template>
 <script>
@@ -41,6 +53,7 @@ import PaginationComponent from "../../components/movies/pagination/PaginationCo
 import SingleMovieComponentForList from "../../components/movies/movies-list/SingleMovieComponentForList";
 import SearchComponent from "../../components/movies/search-component/SearchComponent";
 import DropdownComponent from "../../components/movies/dropown/DropdownComponent";
+import MostRatedComponent from "../../components/movies/popular-movies/MostRatedComponent";
 import { mapActions, mapGetters } from "vuex";
 export default {
   name: "MoviesList",
@@ -49,6 +62,7 @@ export default {
     SingleMovieComponentForList,
     SearchComponent,
     DropdownComponent,
+    MostRatedComponent,
   },
   methods: {
     ...mapActions([
@@ -62,6 +76,7 @@ export default {
       "startFetchGenreForSearhTerm",
       "startFetchCurrentuser",
       "startAddMovieToWatchList",
+      "startFetchMostRatedMovies",
     ]),
     redirectToSingleMovie(id) {
       this.$router.push(`/movie/${id}`);
@@ -74,12 +89,14 @@ export default {
       "getGenresFromState",
       "getSearchedGenreFromState",
       "getCurrentUserFromState",
+      "getMostRatedMoviesFromState",
     ]),
   },
   async created() {
     await this.startFetchMovies();
     await this.startFetchAllGenres();
     await this.startFetchCurrentuser();
+    await this.startFetchMostRatedMovies();
   },
 };
 </script>
@@ -87,12 +104,30 @@ export default {
 .wraper {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 .input-search {
-  margin-bottom: -30px;
+  margin-right: 80px;
 }
 .dropdown {
-  margin-left: 420px;
+  margin-right: -190px;
+}
+.wraper-aside {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: row;
+}
+.most-rated {
+  margin-right: 20px;
+  margin-left: -50px;
+}
+.movie-list-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 10px;
 }
 .watch-list {

@@ -12,6 +12,7 @@
           <p class="card-text">{{ movie.description.slice(0, 150) }}...</p>
           <p class="card-text"></p>
         </div>
+        <LikeDislikeComponent :movie="movie" />
       </div>
       <p class="watch-list">Add to watch list</p>
       <input
@@ -23,8 +24,12 @@
   </div>
 </template>
 <script>
+import LikeDislikeComponent from "../like-dislike/LikeDislikeComponent";
 export default {
   name: "SingleMovieComponent",
+  components: {
+    LikeDislikeComponent,
+  },
   props: {
     movie: {
       type: Object,
