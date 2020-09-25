@@ -1,12 +1,18 @@
 <template>
   <div>
     <h2>Create movie</h2>
-    <form>
+    <form @submit.prevent="handleSubmit">
       <div class="form-wraper">
         <div class="form-group row input">
           <label for="title" class="col-sm-2 col-form-label">Title:</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control" id="title" />
+            <input
+              type="text"
+              class="form-control"
+              id="title"
+              v-model="movie.title"
+              required
+            />
           </div>
         </div>
         <div class="form-group row input">
@@ -14,17 +20,25 @@
             >Description:</label
           >
           <div class="col-sm-12">
-            <input type="text" class="form-control" id="description" />
+            <input
+              type="text"
+              class="form-control"
+              id="description"
+              v-model="movie.description"
+              required
+            />
           </div>
         </div>
         <div class="form-group row input">
-          <label for="text" class="col-sm-2 col-form-label">Image</label>
+          <label for="image_url" class="col-sm-2 col-form-label">Image</label>
           <div class="col-sm-12">
             <input
               type="text"
               class="form-control"
-              id="text"
+              id="image_url"
               placeholder="url"
+              v-model="movie.image_url"
+              required
             />
           </div>
         </div>
@@ -33,18 +47,39 @@
             >Genre:</label
           >
           <div class="col-sm-12">
-            <select class="form-control">
-              <option>Select</option>
+            <select class="form-control" v-model="movie.genre" required>
+              <option
+                class="selelct-option"
+                v-for="genre in genres"
+                :key="genre.id"
+                :value="genre.id"
+                >{{ genre.name }}</option
+              >
             </select>
           </div>
         </div>
       </div>
+      <button type="submit" class="btn btn-secondary">Submit</button>
     </form>
   </div>
 </template>
 <script>
 export default {
   name: "MovieFormComponent",
+  data() {
+    return {
+      movie: {},
+    };
+  },
+  props: {
+    genres: {
+      type: Array,
+      required: true,
+    },
+  },
+  methods: {
+    async handleSubmit() {},
+  },
 };
 </script>
 <style scoped>
@@ -56,5 +91,8 @@ export default {
 }
 .input {
   width: 400px;
+}
+select {
+  text-transform: capitalize;
 }
 </style>
