@@ -123,4 +123,12 @@ export default {
     const response = await movieService.fetchMostRatedMovies();
     commit("SET_MOST_RATED_MOVIES", response.data);
   },
+  async postMovie({ commit }, movie) {
+    try {
+      await movieService.postMovie(movie);
+    } catch (error) {
+      console.log(error.message);
+      commit();
+    }
+  },
 };
