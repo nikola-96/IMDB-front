@@ -59,6 +59,16 @@
               </option>
             </select>
           </div>
+          <div class="form-group">
+            <label for="file">Add image</label>
+            <input
+              type="file"
+              ref="file"
+              class="form-control-file"
+              id="file"
+              @change="handleFileUpload"
+            />
+          </div>
         </div>
       </div>
       <button type="submit" class="btn btn-secondary">Submit</button>
@@ -85,8 +95,17 @@ export default {
   },
   methods: {
     async handleSubmit() {
+      console.log(this.movie);
       await this.postMovie(this.movie);
-      this.movie = {};
+      // this.movie = {};
+    },
+    handleFileUpload(e) {
+      var fileReader = new FileReader();
+      fileReader.readAsDataURL(e.target.files[0]);
+      fileReader.onload = (e) => {
+        this.movie.image = e.target.result;
+      };
+      console.log(this.movie);
     },
   },
 };
