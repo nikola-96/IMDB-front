@@ -1,10 +1,20 @@
 <template>
   <div>
-    <h2>Create movie</h2>
+    <div class="btn-heading">
+      <h2>Create movie</h2>
+      <button
+        type="button"
+        class="btn btn-light btn-ombd"
+        @click="() => this.$router.push('/movies/omdb')"
+      >
+        from OMBd
+      </button>
+    </div>
     <form @submit.prevent="handleSubmit">
       <div class="form-wraper">
         <div class="form-group row input">
           <label for="title" class="col-sm-2 col-form-label">Title:</label>
+
           <div class="col-sm-12">
             <input
               type="text"
@@ -103,5 +113,14 @@ export default {
 }
 select {
   text-transform: capitalize;
+}
+.btn-heading {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+}
+.btn-ombd {
+  margin-left: 10px;
 }
 </style>
