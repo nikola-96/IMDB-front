@@ -6,7 +6,6 @@ import MoviesList from "../views/movies/MoviesList";
 import SingleMovie from "../views/movies/SingleMovie";
 import WatchList from "../views/movies/WatchList";
 import MovieCreate from "../views/movies/MovieCreate";
-import MovieCreateOmbd from "../views/movies/MovieCreateOmbd";
 
 Vue.use(VueRouter);
 
@@ -40,11 +39,6 @@ const routes = [
     path: "/movies/create",
     name: "MovieCreate",
     component: MovieCreate,
-  },
-  {
-    path: "/movies/omdb",
-    name: "MovieCreateOmdb",
-    component: MovieCreateOmbd,
   },
 ];
 

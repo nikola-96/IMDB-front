@@ -5,7 +5,7 @@
       <button
         type="button"
         class="btn btn-light btn-ombd"
-        @click="() => this.$router.push('/movies/omdb')"
+        @click="handleFetchigMovie"
       >
         from OMBd
       </button>
@@ -21,7 +21,7 @@
               class="form-control"
               id="title"
               v-model="movie.title"
-              required
+              placeholder="Enter title, and push button OMBd for fetching movie."
             />
           </div>
         </div>
@@ -35,7 +35,6 @@
               class="form-control"
               id="description"
               v-model="movie.description"
-              required
             />
           </div>
         </div>
@@ -48,7 +47,6 @@
               id="image_url"
               placeholder="url"
               v-model="movie.image_url"
-              required
             />
           </div>
         </div>
@@ -57,7 +55,7 @@
             >Genre:</label
           >
           <div class="col-sm-12">
-            <select class="form-control" v-model="movie.genre_id" required>
+            <select class="form-control" v-model="movie.genre_id">
               <option></option>
               <option
                 class="selelct-option"
@@ -76,11 +74,14 @@
   </div>
 </template>
 <script>
+import omdbService from "../../../services/OmbdService";
+
 export default {
   name: "MovieFormComponent",
   data() {
     return {
       movie: {},
+      ombdMovie: {},
     };
   },
   props: {
@@ -96,7 +97,26 @@ export default {
   methods: {
     async handleSubmit() {
       await this.postMovie(this.movie);
-      this.movie = {};
+    },
+    async handleFetchigMovie() {
+      this.ombdMovie = await omdbService.getMovieFromOmbd(this.movie.title);
+      if (this.ombdMovie.Error) {
+        alert(this.ombdMovie.Error);
+      } else {
+        this.movie.title = this.ombdMovie.Title;
+        this.movie.description = this.ombdMovie.Plot;
+        this.movie.image_url = this.ombdMovie.Poster;
+        this.movie.genre_id = this.getIdFroGenre(
+          this.ombdMovie.Genre.split(", ")[0]
+        )[0].id;
+      }
+    },
+    getIdFroGenre(gen) {
+      return this.genres.filter((genre) => {
+        if (genre.name == gen.toLowerCase()) {
+          return genre.id;
+        }
+      });
     },
   },
 };

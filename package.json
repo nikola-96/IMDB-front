@@ -10,6 +10,9 @@
   "dependencies": {
     "axios": "^0.20.0",
     "core-js": "^3.6.5",
+    "qs-stringify": "^1.2.1",
+    "querystring": "^0.2.0",
+    "querystring-es3": "^0.2.1",
     "vue": "^2.6.11",
     "vue-debounce": "^2.5.7",
     "vue-like-dislike-buttons": "^0.2.4",

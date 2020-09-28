@@ -79,4 +79,7 @@ export default {
       }
     });
   },
+  // SET_MOVIE_FROM_OMBD(state, movieFromOmbd) {
+  //   state.movieFromOmbd = movieFromOmbd;
+  // },
 };
