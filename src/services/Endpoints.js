@@ -16,6 +16,7 @@ export const MOVIES = {
   LIKE_MOVIE: "/likes",
   DISLIKE_MOVIE: "/dislikes",
   MOST_RATED: "/movies/most_rated",
+  OMDB: "http://www.omdbapi.com/?apikey=79e58b52&",
 };
 export const AUTH = {
   LOGIN: "/auth/login",

@@ -1,7 +1,7 @@
 import movieService from "../services/MovieService";
 import authService from "../services/AuthService";
 import commentService from "../services/CommentService";
-
+// import omdbService from "../services/OmbdService";
 export default {
   async startFetchMovies({ commit }) {
     const response = await movieService.fetchAllMovies();
@@ -131,4 +131,9 @@ export default {
       commit();
     }
   },
+  // async getMovieFromOmdb({ commit }, title) {
+  //   const response = await omdbService.getMovieFromOmbd(title);
+  //   console.log(response.data);
+  //   commit("SET_MOVIE_FROM_OMBD", response.data);
+  // },
 };

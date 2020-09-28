@@ -19,6 +19,7 @@ export default new Vuex.Store({
     user: {},
     watchList: {},
     mostRatedMovies: [],
+    movieFromOmbd: {},
   },
   getters,
   mutations,
