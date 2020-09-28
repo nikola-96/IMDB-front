@@ -38,7 +38,6 @@
               id="image_url"
               placeholder="url"
               v-model="movie.image_url"
-              required
             />
           </div>
         </div>
@@ -100,12 +99,11 @@ export default {
       // this.movie = {};
     },
     handleFileUpload(e) {
-      var fileReader = new FileReader();
+      const fileReader = new FileReader();
       fileReader.readAsDataURL(e.target.files[0]);
       fileReader.onload = (e) => {
         this.movie.image = e.target.result;
       };
-      console.log(this.movie);
     },
   },
 };
