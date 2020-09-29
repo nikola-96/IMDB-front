@@ -10,4 +10,5 @@ export default {
   getCurrentUserFromState: (state) => state.user,
   getWatchListFromState: (state) => state.watchList,
   getMostRatedMoviesFromState: (state) => state.mostRatedMovies,
+  getOmbdMovieFromState: (state) => state.mostRatedMovies,
 };

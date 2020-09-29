@@ -1,17 +1,27 @@
 <template>
   <div>
-    <h2>Create movie</h2>
+    <div class="btn-heading">
+      <h2>Create movie</h2>
+      <button
+        type="button"
+        class="btn btn-light btn-ombd"
+        @click="handleFetchigMovie"
+      >
+        from OMBd
+      </button>
+    </div>
     <form @submit.prevent="handleSubmit">
       <div class="form-wraper">
         <div class="form-group row input">
           <label for="title" class="col-sm-2 col-form-label">Title:</label>
+
           <div class="col-sm-12">
             <input
               type="text"
               class="form-control"
               id="title"
               v-model="movie.title"
-              required
+              placeholder="Enter title, and push button OMBd for fetching movie."
             />
           </div>
         </div>
@@ -25,7 +35,6 @@
               class="form-control"
               id="description"
               v-model="movie.description"
-              required
             />
           </div>
         </div>
@@ -46,7 +55,7 @@
             >Genre:</label
           >
           <div class="col-sm-12">
-            <select class="form-control" v-model="movie.genre_id" required>
+            <select class="form-control" v-model="movie.genre_id">
               <option></option>
               <option
                 class="selelct-option"
@@ -75,11 +84,14 @@
   </div>
 </template>
 <script>
+import omdbService from "../../../services/OmbdService";
+
 export default {
   name: "MovieFormComponent",
   data() {
     return {
       movie: {},
+      ombdMovie: {},
     };
   },
   props: {
@@ -97,12 +109,34 @@ export default {
       await this.postMovie(this.movie);
       this.movie = {};
     },
+
     handleFileUpload(e) {
       const fileReader = new FileReader();
       fileReader.readAsDataURL(e.target.files[0]);
       fileReader.onload = (e) => {
         this.movie.image = e.target.result;
       };
+
+    async handleFetchigMovie() {
+      this.ombdMovie = await omdbService.getMovieFromOmbd(this.movie.title);
+      if (this.ombdMovie.Error) {
+        alert(this.ombdMovie.Error);
+      } else {
+        this.movie.title = this.ombdMovie.Title;
+        this.movie.description = this.ombdMovie.Plot;
+        this.movie.image_url = this.ombdMovie.Poster;
+        this.movie.genre_id = this.getIdFroGenre(
+          this.ombdMovie.Genre.split(", ")[0]
+        )[0].id;
+      }
+    },
+    getIdFroGenre(gen) {
+      return this.genres.filter((genre) => {
+        if (genre.name == gen.toLowerCase()) {
+          return genre.id;
+        }
+      });
+
     },
   },
 };
@@ -119,5 +153,14 @@ export default {
 }
 select {
   text-transform: capitalize;
+}
+.btn-heading {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+}
+.btn-ombd {
+  margin-left: 10px;
 }
 </style>
