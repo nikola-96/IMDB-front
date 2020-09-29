@@ -10,6 +10,7 @@
   "dependencies": {
     "axios": "^0.20.0",
     "core-js": "^3.6.5",
+    "pusher-js": "^7.0.0",
     "qs-stringify": "^1.2.1",
     "querystring": "^0.2.0",
     "querystring-es3": "^0.2.1",
