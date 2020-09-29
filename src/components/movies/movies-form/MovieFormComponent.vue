@@ -116,7 +116,7 @@ export default {
       fileReader.onload = (e) => {
         this.movie.image = e.target.result;
       };
-
+    },
     async handleFetchigMovie() {
       this.ombdMovie = await omdbService.getMovieFromOmbd(this.movie.title);
       if (this.ombdMovie.Error) {
@@ -136,7 +136,6 @@ export default {
           return genre.id;
         }
       });
-
     },
   },
 };
