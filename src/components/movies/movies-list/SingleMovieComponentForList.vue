@@ -1,8 +1,8 @@
 <template>
-  <div class="card mb-3 single" style="max-width: 540px;">
+  <div class="card mb-3 single" style="max-width: 540px">
     <div class="row no-gutters">
       <div class="col-md-4">
-        <img :src="movie.image_url" class="card-img" />
+        <img :src="movie.image_url" class="card-img" :alt="image" />
       </div>
       <div class="col-md-8">
         <div class="card-body">
@@ -28,6 +28,7 @@
 </template>
 <script>
 import LikeDislikeComponent from "../like-dislike/LikeDislikeComponent";
+import imageService from "../../../services/ImageService";
 export default {
   name: "SingleMovieComponent",
   components: {
@@ -51,10 +52,14 @@ export default {
       required: true,
     },
   },
-  methods: {
-    handleSelectMovie() {
-      this.startAddMovieToWatchList(this.movie.id);
-    },
+  data() {
+    return {
+      image: {},
+    };
+  },
+  async created() {
+    const response = await imageService.fetchImage();
+    this.image = response.data;
   },
 };
 </script>

@@ -67,6 +67,16 @@
               </option>
             </select>
           </div>
+          <div class="form-group">
+            <label for="file">Add image</label>
+            <input
+              type="file"
+              ref="file"
+              class="form-control-file"
+              id="file"
+              @change="handleFileUpload"
+            />
+          </div>
         </div>
       </div>
       <button type="submit" class="btn btn-secondary">Submit</button>
@@ -99,6 +109,14 @@ export default {
       await this.postMovie(this.movie);
       this.movie = {};
     },
+
+    handleFileUpload(e) {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(e.target.files[0]);
+      fileReader.onload = (e) => {
+        this.movie.image = e.target.result;
+      };
+
     async handleFetchigMovie() {
       this.ombdMovie = await omdbService.getMovieFromOmbd(this.movie.title);
       if (this.ombdMovie.Error) {
@@ -118,6 +136,7 @@ export default {
           return genre.id;
         }
       });
+
     },
   },
 };
