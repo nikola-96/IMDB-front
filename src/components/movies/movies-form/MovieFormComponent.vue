@@ -97,6 +97,7 @@ export default {
   methods: {
     async handleSubmit() {
       await this.postMovie(this.movie);
+      this.movie = {};
     },
     async handleFetchigMovie() {
       this.ombdMovie = await omdbService.getMovieFromOmbd(this.movie.title);
