@@ -83,7 +83,6 @@ class MovieService {
   }
   async postMovie(movie) {
     const response = await HTTP.post(MOVIES.GET_ALL, movie);
-    console.log(response);
   }
 }
 

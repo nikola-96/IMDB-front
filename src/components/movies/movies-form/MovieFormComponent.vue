@@ -94,9 +94,8 @@ export default {
   },
   methods: {
     async handleSubmit() {
-      console.log(this.movie);
       await this.postMovie(this.movie);
-      // this.movie = {};
+      this.movie = {};
     },
     handleFileUpload(e) {
       const fileReader = new FileReader();
