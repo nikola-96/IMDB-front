@@ -61,6 +61,7 @@ import SingleMovieComponentForList from "../../components/movies/movies-list/Sin
 import SearchComponent from "../../components/movies/search-component/SearchComponent";
 import DropdownComponent from "../../components/movies/dropown/DropdownComponent";
 import MostRatedComponent from "../../components/movies/popular-movies/MostRatedComponent";
+import channel from "../../services/WebsocketService";
 import { mapActions, mapGetters } from "vuex";
 export default {
   name: "MoviesList",
@@ -84,6 +85,7 @@ export default {
       "startFetchCurrentuser",
       "startAddMovieToWatchList",
       "startFetchMostRatedMovies",
+      "incremetLikeSocket",
     ]),
     redirectToSingleMovie(id) {
       this.$router.push(`/movie/${id}`);
@@ -104,6 +106,9 @@ export default {
     await this.startFetchAllGenres();
     await this.startFetchCurrentuser();
     await this.startFetchMostRatedMovies();
+    channel.bind("my-event", (event) => {
+      this.incremetLikeSocket(event.like.id);
+    });
   },
 };
 </script>

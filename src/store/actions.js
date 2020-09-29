@@ -131,9 +131,8 @@ export default {
       commit();
     }
   },
-  // async getMovieFromOmdb({ commit }, title) {
-  //   const response = await omdbService.getMovieFromOmbd(title);
-  //   console.log(response.data);
-  //   commit("SET_MOVIE_FROM_OMBD", response.data);
-  // },
+  async incremetLikeSocket({ commit }, id) {
+    console.log(id);
+    commit("INCREMENT_NUM_OF_LIKES_MOVIES", id);
+  },
 };
