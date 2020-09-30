@@ -107,6 +107,7 @@ export default {
     await this.startFetchCurrentuser();
     await this.startFetchMostRatedMovies();
     channel.bind("my-event", (event) => {
+      console.log("usao sam");
       this.incremetLikeSocket(event.like.id);
     });
   },

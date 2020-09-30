@@ -13,6 +13,7 @@
 import VueLikeDislikeButtons from "vue-like-dislike-buttons";
 import "vue-like-dislike-buttons/src/assets/scss/main.scss";
 import { mapActions } from "vuex";
+// import channel from "../../../services/WebsocketService";
 export default {
   name: "LikeDislikeComponent",
   components: {
@@ -32,6 +33,7 @@ export default {
     ...mapActions([
       "startIncrementLikeOnMovies",
       "startIncrementDislikeOnMovies",
+      "incremetLikeSocket",
     ]),
     handleDislike() {
       this.startIncrementDislikeOnMovies({
@@ -46,7 +48,12 @@ export default {
       });
     },
   },
-  created() {},
+  // mounted() {
+  //   channel.bind("my-event", (event) => {
+  //     console.log("usao sam");
+  //     this.incremetLikeSocket(event.like.id);
+  //   });
+  // },
 };
 </script>
 

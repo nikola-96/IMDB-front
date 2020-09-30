@@ -133,6 +133,6 @@ export default {
   },
   async incremetLikeSocket({ commit }, id) {
     console.log(id);
-    commit("INCREMENT_NUM_OF_LIKES_MOVIES", id);
+    commit("INCREMENT_NUM_OF_LIKES_ON_SINGLE_MOVIES");
   },
 };
