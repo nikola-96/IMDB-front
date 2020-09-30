@@ -10,29 +10,8 @@
       </div>
       <div class="wraper">
         <div class="movie-list-header">
-          <button
-            type="button"
-            class="btn btn-secondary watch-list"
-            @click="() => this.$router.push('/movies/watch_list')"
-          >
-            Watch list
-          </button>
-          <SearchComponent
-            class="input-search"
-            :startSearchMovie="startSearchMovie"
-            :startFetchMovies="startFetchMovies"
-            :genre="getSearchedGenreFromState"
-            :startFetchGenreForSearhTerm="startFetchGenreForSearhTerm"
-          />
-          <DropdownComponent
-            v-if="getGenresFromState"
-            class="dropdown"
-            :genres="getGenresFromState"
-            :startFetchGenreMovie="startFetchGenreMovie"
-            :startFetchMovies="startFetchMovies"
-          />
+          <HeaderForMovieList />
         </div>
-
         <div>
           <SingleMovieComponentForList
             v-for="movie in getAllMoviesFromState.data"
@@ -58,29 +37,24 @@
 <script>
 import PaginationComponent from "../../components/movies/pagination/PaginationComponent";
 import SingleMovieComponentForList from "../../components/movies/movies-list/SingleMovieComponentForList";
-import SearchComponent from "../../components/movies/search-component/SearchComponent";
-import DropdownComponent from "../../components/movies/dropown/DropdownComponent";
 import MostRatedComponent from "../../components/movies/popular-movies/MostRatedComponent";
+import HeaderForMovieList from "../../views/movies/HeaderForMovieList";
 import { mapActions, mapGetters } from "vuex";
 export default {
   name: "MoviesList",
   components: {
     PaginationComponent,
     SingleMovieComponentForList,
-    SearchComponent,
-    DropdownComponent,
     MostRatedComponent,
+    HeaderForMovieList,
   },
   methods: {
     ...mapActions([
       "startFetchMovies",
       "startFetchNextPage",
-      "startSearchMovie",
       "startFetchNextPageForSearchedTerm",
       "startFetchAllGenres",
-      "startFetchGenreMovie",
       "startFetchNextPageForGenre",
-      "startFetchGenreForSearhTerm",
       "startFetchCurrentuser",
       "startAddMovieToWatchList",
       "startFetchMostRatedMovies",
@@ -93,7 +67,6 @@ export default {
     ...mapGetters([
       "getAllMoviesFromState",
       "getTermFromState",
-      "getGenresFromState",
       "getSearchedGenreFromState",
       "getCurrentUserFromState",
       "getMostRatedMoviesFromState",
@@ -132,10 +105,11 @@ export default {
 }
 .movie-list-header {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  /* flex-direction: row; */
+  /* justify-content: space-between; */
+  /* align-items: center; */
   margin-bottom: 10px;
+  width: 100%;
 }
 .watch-list {
   margin-right: 70px;

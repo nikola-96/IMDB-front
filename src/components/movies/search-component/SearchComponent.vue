@@ -1,7 +1,11 @@
-
 <template>
   <div>
-    <input v-debounce:750ms="handleSearch" type="text" placeholder="Search movie" />
+    <input
+      class="form-control mr-sm-2"
+      v-debounce:750ms="handleSearch"
+      type="text"
+      placeholder="Search movie"
+    />
   </div>
 </template>
 <script>

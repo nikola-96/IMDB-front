@@ -108,6 +108,7 @@ export default {
     async handleSubmit() {
       await this.postMovie(this.movie);
       this.movie = {};
+      this.$router.push("/movies");
     },
 
     handleFileUpload(e) {

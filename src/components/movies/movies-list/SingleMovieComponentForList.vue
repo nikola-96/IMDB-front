@@ -57,6 +57,11 @@ export default {
       image: {},
     };
   },
+  methods: {
+    handleSelectMovie() {
+      this.startAddMovieToWatchList(this.movie.id);
+    },
+  },
   async created() {
     const response = await imageService.fetchImage();
     this.image = response.data;
